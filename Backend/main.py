@@ -5,16 +5,17 @@ from pydantic import BaseModel
 from minecraft_service import MinecraftService
 import uvicorn
 
-
+# Create FastAPI app
 app = FastAPI(
     title="Minecraft Server Manager API",
     description="Remote Minecraft server control via SSH",
     version="2.0.0"
 )
 
-
+# Global service instance
 service = MinecraftService()
 
+# Helper function to handle SSH connections
 def execute_with_ssh(func, *args, **kwargs):
     """Execute function with SSH connection handling"""
     try:
@@ -26,15 +27,16 @@ def execute_with_ssh(func, *args, **kwargs):
         service.disconnect()
         return {"success": False, "error": str(e)}
 
-
+# Request models for POST endpoints
 class CommandRequest(BaseModel):
     command: str
 
+# Root endpoint
 @app.get("/")
 async def root():
     return {"message": "Minecraft Server Manager API", "version": "2.0.0"}
 
-
+# Server Control Endpoints
 @app.get("/api/server/status")
 async def get_server_status():
     """Check if Minecraft server is running"""
@@ -66,6 +68,7 @@ async def kill_server():
     """Force kill Minecraft server"""
     return execute_with_ssh(service.kill_server)
 
+# Server Management Endpoints  
 @app.post("/api/server/create")
 async def create_server():
     """Create new Minecraft server"""
@@ -81,7 +84,7 @@ async def get_server_info():
     """Get server information"""
     return execute_with_ssh(service.get_server_info)
 
-
+# Console Endpoints
 @app.post("/api/console/command")
 async def send_console_command(request: CommandRequest):
     """Send command to Minecraft console"""
@@ -96,7 +99,7 @@ async def get_console_logs(lines: int = 50):
         return service.get_logs(lines)
     return execute_with_ssh(get_logs)
 
-
+# Stats Endpoints
 @app.get("/api/stats/system")
 async def get_system_stats():
     """Get system resource statistics"""
@@ -107,12 +110,12 @@ async def get_server_stats():
     """Get Minecraft server statistics"""
     return execute_with_ssh(service.get_server_stats)
 
-
+# Serve test page
 @app.get("/test")
 async def serve_test_page():
     """Serve API test page"""
     return FileResponse("backend/test.html")
 
-
+# Run server
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
