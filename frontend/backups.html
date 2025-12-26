@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backups - Minecraft Manager</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/backups.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1>🎮 Minecraft Manager</h1>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="nav-item">🎮 Dashboard</a>
+                    <a href="servers.html" class="nav-item">🖥️ Servers</a>
+                    <a href="players.html" class="nav-item">👥 Players</a>
+                    <a href="console.html" class="nav-item">💻 Console</a>
+                    <a href="logs.html" class="nav-item">📜 Logs</a>
+                    <a href="performance.html" class="nav-item">📊 Performance</a>
+                    <a href="files.html" class="nav-item">📁 Files</a>
+                    <a href="backups.html" class="nav-item active">💾 Backups</a>
+                    <a href="settings.html" class="nav-item">⚙️ Settings</a>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <main class="backups-page">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <div class="header-content">
+                            <h2>Backup Manager</h2>
+                            <p>Create, restore, and manage server backups</p>
+                        </div>
+                        <div class="header-actions">
+                            <button class="btn btn-primary" id="create-backup-btn">
+                                <span>💾</span> Create Backup Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Backup Stats Overview -->
+                    <section class="backup-stats">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">📦</div>
+                                <div class="stat-info">
+                                    <h3>Total Backups</h3>
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-detail">8 auto + 4 manual</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">💿</div>
+                                <div class="stat-info">
+                                    <h3>Storage Used</h3>
+                                    <div class="stat-value">18.2 GB</div>
+                                    <div class="stat-detail">of 50 GB limit</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🕐</div>
+                                <div class="stat-info">
+                                    <h3>Last Backup</h3>
+                                    <div class="stat-value">2h ago</div>
+                                    <div class="stat-detail">Dec 25, 17:30</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">⏰</div>
+                                <div class="stat-info">
+                                    <h3>Next Auto Backup</h3>
+                                    <div class="stat-value">4h</div>
+                                    <div class="stat-detail">Dec 25, 23:30</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Create Backup Section -->
+                    <section class="create-backup-section">
+                        <div class="section-header">
+                            <h3>🆕 Create New Backup</h3>
+                        </div>
+                        <div class="create-backup-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Backup Name</label>
+                                    <input type="text" class="form-input" placeholder="my-backup-2024-12-25" id="backup-name">
+                                    <span class="form-hint">Leave empty for auto-generated name</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Backup Type</label>
+                                    <select class="form-select" id="backup-type">
+                                        <option value="full">Full Backup (World + Configs)</option>
+                                        <option value="world">World Only</option>
+                                        <option value="config">Configs Only</option>
+                                        <option value="plugins">Plugins Only</option>
+                                        <option value="custom">Custom Selection</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Compression</label>
+                                    <select class="form-select" id="compression">
+                                        <option value="zip">ZIP (Fast)</option>
+                                        <option value="tar.gz" selected>TAR.GZ (Balanced)</option>
+                                        <option value="7z">7Z (Best Compression)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description (Optional)</label>
+                                    <input type="text" class="form-input" placeholder="Pre-update backup..." id="backup-description">
+                                </div>
+                            </div>
+                            <div class="backup-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Stop server during backup</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Verify backup integrity</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span>Upload to cloud storage</span>
+                                </label>
+                            </div>
+                            <div class="backup-actions">
+                                <button class="btn btn-primary">💾 Create Backup</button>
+                                <button class="btn btn-secondary">📋 Preview Files</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Backup Progress (shown during backup) -->
+                    <section class="backup-progress" style="display: none;">
+                        <div class="section-header">
+                            <h3>⏳ Backup in Progress</h3>
+                        </div>
+                        <div class="progress-content">
+                            <div class="progress-info">
+                                <span class="progress-label">Creating backup: world-backup-2024-12-25.tar.gz</span>
+                                <span class="progress-percentage">67%</span>
+                            </div>
+                            <div class="progress-bar-wrapper">
+                                <div class="progress-bar" style="width: 67%;"></div>
+                            </div>
+                            <div class="progress-details">
+                                <span>Processing: world/region/r.0.0.mca</span>
+                                <span>2.4 GB / 3.6 GB</span>
+                                <span>ETA: 2 minutes</span>
+                            </div>
+                            <div class="progress-actions">
+                                <button class="btn btn-danger btn-small">✖️ Cancel</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Backup List -->
+                    <section class="backup-list-section">
+                        <div class="section-header">
+                            <h3>📦 Your Backups</h3>
+                            <div class="section-actions">
+                                <div class="search-box">
+                                    <input type="text" class="form-input" placeholder="Search backups...">
+                                    <button class="btn btn-small">🔍</button>
+                                </div>
+                                <select class="form-select">
+                                    <option>All Backups</option>
+                                    <option>Auto Backups</option>
+                                    <option>Manual Backups</option>
+                                    <option>This Week</option>
+                                    <option>This Month</option>
+                                </select>
+                                <button class="btn btn-small">🔄 Refresh</button>
+                            </div>
+                        </div>
+
+                        <div class="backup-list">
+                            <!-- Backup Item 1 (Latest) -->
+                            <div class="backup-item latest">
+                                <div class="backup-icon">📦</div>
+                                <div class="backup-info">
+                                    <div class="backup-header">
+                                        <h4>world-backup-2024-12-25-1730</h4>
+                                        <div class="backup-badges">
+                                            <span class="badge auto">AUTO</span>
+                                            <span class="badge latest">LATEST</span>
+                                        </div>
+                                    </div>
+                                    <div class="backup-meta">
+                                        <span class="meta-item">
+                                            <span class="meta-icon">📅</span>
+                                            Dec 25, 2024 at 5:30 PM
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">💿</span>
+                                            1.8 GB
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">📁</span>
+                                            Full Backup
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">✅</span>
+                                            Verified
+                                        </span>
+                                    </div>
+                                    <div class="backup-description">
+                                        Automatic scheduled backup
+                                    </div>
+                                </div>
+                                <div class="backup-actions">
+                                    <button class="btn btn-small btn-primary">🔄 Restore</button>
+                                    <button class="btn btn-small">📥 Download</button>
+                                    <button class="btn btn-small">👁️ Preview</button>
+                                    <button class="btn btn-small btn-danger">🗑️ Delete</button>
+                                </div>
+                            </div>
+
+                            <!-- Backup Item 2 -->
+                            <div class="backup-item">
+                                <div class="backup-icon">📦</div>
+                                <div class="backup-info">
+                                    <div class="backup-header">
+                                        <h4>pre-update-backup</h4>
+                                        <div class="backup-badges">
+                                            <span class="badge manual">MANUAL</span>
+                                        </div>
+                                    </div>
+                                    <div class="backup-meta">
+                                        <span class="meta-item">
+                                            <span class="meta-icon">📅</span>
+                                            Dec 25, 2024 at 2:15 PM
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">💿</span>
+                                            1.7 GB
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">📁</span>
+                                            Full Backup
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">✅</span>
+                                            Verified
+                                        </span>
+                                    </div>
+                                    <div class="backup-description">
+                                        Backup before updating to 1.21.3
+                                    </div>
+                                </div>
+                                <div class="backup-actions">
+                                    <button class="btn btn-small btn-primary">🔄 Restore</button>
+                                    <button class="btn btn-small">📥 Download</button>
+                                    <button class="btn btn-small">👁️ Preview</button>
+                                    <button class="btn btn-small btn-danger">🗑️ Delete</button>
+                                </div>
+                            </div>
+
+                            <!-- Backup Item 3 -->
+                            <div class="backup-item">
+                                <div class="backup-icon">📦</div>
+                                <div class="backup-info">
+                                    <div class="backup-header">
+                                        <h4>world-backup-2024-12-25-1130</h4>
+                                        <div class="backup-badges">
+                                            <span class="badge auto">AUTO</span>
+                                        </div>
+                                    </div>
+                                    <div class="backup-meta">
+                                        <span class="meta-item">
+                                            <span class="meta-icon">📅</span>
+                                            Dec 25, 2024 at 11:30 AM
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">💿</span>
+                                            1.6 GB
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">📁</span>
+                                            Full Backup
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">✅</span>
+                                            Verified
+                                        </span>
+                                    </div>
+                                    <div class="backup-description">
+                                        Automatic scheduled backup
+                                    </div>
+                                </div>
+                                <div class="backup-actions">
+                                    <button class="btn btn-small btn-primary">🔄 Restore</button>
+                                    <button class="btn btn-small">📥 Download</button>
+                                    <button class="btn btn-small">👁️ Preview</button>
+                                    <button class="btn btn-small btn-danger">🗑️ Delete</button>
+                                </div>
+                            </div>
+
+                            <!-- Backup Item 4 -->
+                            <div class="backup-item">
+                                <div class="backup-icon">📦</div>
+                                <div class="backup-info">
+                                    <div class="backup-header">
+                                        <h4>world-backup-2024-12-24-2330</h4>
+                                        <div class="backup-badges">
+                                            <span class="badge auto">AUTO</span>
+                                        </div>
+                                    </div>
+                                    <div class="backup-meta">
+                                        <span class="meta-item">
+                                            <span class="meta-icon">📅</span>
+                                            Dec 24, 2024 at 11:30 PM
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">💿</span>
+                                            1.5 GB
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">📁</span>
+                                            World Only
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">✅</span>
+                                            Verified
+                                        </span>
+                                    </div>
+                                    <div class="backup-description">
+                                        Automatic scheduled backup
+                                    </div>
+                                </div>
+                                <div class="backup-actions">
+                                    <button class="btn btn-small btn-primary">🔄 Restore</button>
+                                    <button class="btn btn-small">📥 Download</button>
+                                    <button class="btn btn-small">👁️ Preview</button>
+                                    <button class="btn btn-small btn-danger">🗑️ Delete</button>
+                                </div>
+                            </div>
+
+                            <!-- Backup Item 5 (Corrupted) -->
+                            <div class="backup-item corrupted">
+                                <div class="backup-icon">⚠️</div>
+                                <div class="backup-info">
+                                    <div class="backup-header">
+                                        <h4>world-backup-2024-12-23-1730</h4>
+                                        <div class="backup-badges">
+                                            <span class="badge auto">AUTO</span>
+                                            <span class="badge error">CORRUPTED</span>
+                                        </div>
+                                    </div>
+                                    <div class="backup-meta">
+                                        <span class="meta-item">
+                                            <span class="meta-icon">📅</span>
+                                            Dec 23, 2024 at 5:30 PM
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">💿</span>
+                                            0.8 GB
+                                        </span>
+                                        <span class="meta-item">
+                                            <span class="meta-icon">📁</span>
+                                            Full Backup
+                                        </span>
+                                        <span class="meta-item error">
+                                            <span class="meta-icon">❌</span>
+                                            Verification Failed
+                                        </span>
+                                    </div>
+                                    <div class="backup-description">
+                                        Backup was interrupted - file may be incomplete
+                                    </div>
+                                </div>
+                                <div class="backup-actions">
+                                    <button class="btn btn-small" disabled>🔄 Restore</button>
+                                    <button class="btn btn-small">📥 Download</button>
+                                    <button class="btn btn-small">🔧 Repair</button>
+                                    <button class="btn btn-small btn-danger">🗑️ Delete</button>
+                                </div>
+                            </div>
+
+                            <!-- Load More -->
+                            <button class="load-more-btn">📦 Load More (7 more backups)</button>
+                        </div>
+                    </section>
+
+                    <!-- Auto Backup Settings -->
+                    <section class="auto-backup-section">
+                        <div class="section-header">
+                            <h3>⚙️ Auto Backup Settings</h3>
+                            <div class="auto-backup-toggle">
+                                <span class="toggle-label">Auto Backup</span>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="auto-backup-toggle" checked>
+                                    <label for="auto-backup-toggle" class="toggle-slider"></label>
+                                </div>
+                                <span class="toggle-status enabled">Enabled</span>
+                            </div>
+                        </div>
+                        <div class="auto-backup-settings">
+                            <div class="settings-grid">
+                                <div class="setting-card">
+                                    <div class="setting-icon">⏰</div>
+                                    <div class="setting-content">
+                                        <h4>Backup Frequency</h4>
+                                        <select class="form-select">
+                                            <option>Every Hour</option>
+                                            <option>Every 3 Hours</option>
+                                            <option selected>Every 6 Hours</option>
+                                            <option>Every 12 Hours</option>
+                                            <option>Daily</option>
+                                            <option>Weekly</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="setting-card">
+                                    <div class="setting-icon">📦</div>
+                                    <div class="setting-content">
+                                        <h4>Keep Backups</h4>
+                                        <select class="form-select">
+                                            <option>Last 5 backups</option>
+                                            <option selected>Last 10 backups</option>
+                                            <option>Last 20 backups</option>
+                                            <option>Last 30 days</option>
+                                            <option>All backups</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="setting-card">
+                                    <div class="setting-icon">📁</div>
+                                    <div class="setting-content">
+                                        <h4>Backup Type</h4>
+                                        <select class="form-select">
+                                            <option selected>Full Backup</option>
+                                            <option>World Only</option>
+                                            <option>Incremental</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="setting-card">
+                                    <div class="setting-icon">📤</div>
+                                    <div class="setting-content">
+                                        <h4>Storage Limit</h4>
+                                        <select class="form-select">
+                                            <option>25 GB</option>
+                                            <option selected>50 GB</option>
+                                            <option>100 GB</option>
+                                            <option>Unlimited</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="settings-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Pause server during backup</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Verify backup after creation</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span>Compress old backups (saves space)</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span>Email notification after backup</span>
+                                </label>
+                            </div>
+                            <div class="settings-actions">
+                                <button class="btn btn-primary">💾 Save Settings</button>
+                                <button class="btn btn-secondary">↶ Reset to Defaults</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Backup Schedule -->
+                    <section class="backup-schedule">
+                        <div class="section-header">
+                            <h3>📅 Backup Schedule</h3>
+                        </div>
+                        <div class="schedule-content">
+                            <div class="schedule-timeline">
+                                <div class="timeline-item past">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <span class="timeline-time">11:30 AM</span>
+                                        <span class="timeline-label">Completed</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-item past">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <span class="timeline-time">5:30 PM</span>
+                                        <span class="timeline-label">Completed</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-item current">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <span class="timeline-time">11:30 PM</span>
+                                        <span class="timeline-label">Next Backup</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-item future">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <span class="timeline-time">5:30 AM</span>
+                                        <span class="timeline-label">Tomorrow</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-item future">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <span class="timeline-time">11:30 AM</span>
+                                        <span class="timeline-label">Tomorrow</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cloud Backup (Optional Feature) -->
+                    <section class="cloud-backup-section">
+                        <div class="section-header">
+                            <h3>☁️ Cloud Backup</h3>
+                            <span class="badge premium">PREMIUM</span>
+                        </div>
+                        <div class="cloud-content">
+                            <div class="cloud-providers">
+                                <div class="provider-card">
+                                    <div class="provider-icon">📦</div>
+                                    <div class="provider-name">Amazon S3</div>
+                                    <div class="provider-status disconnected">Not Connected</div>
+                                    <button class="btn btn-small">🔗 Connect</button>
+                                </div>
+                                <div class="provider-card">
+                                    <div class="provider-icon">☁️</div>
+                                    <div class="provider-name">Google Drive</div>
+                                    <div class="provider-status disconnected">Not Connected</div>
+                                    <button class="btn btn-small">🔗 Connect</button>
+                                </div>
+                                <div class="provider-card">
+                                    <div class="provider-icon">💧</div>
+                                    <div class="provider-name">Dropbox</div>
+                                    <div class="provider-status disconnected">Not Connected</div>
+                                    <button class="btn btn-small">🔗 Connect</button>
+                                </div>
+                                <div class="provider-card">
+                                    <div class="provider-icon">🖥️</div>
+                                    <div class="provider-name">FTP/SFTP</div>
+                                    <div class="provider-status disconnected">Not Connected</div>
+                                    <button class="btn btn-small">🔗 Connect</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance - Minecraft Manager</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/performance.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1>🎮 Minecraft Manager</h1>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="nav-item">🎮 Dashboard</a>
+                    <a href="servers.html" class="nav-item">🖥️ Servers</a>
+                    <a href="players.html" class="nav-item">👥 Players</a>
+                    <a href="console.html" class="nav-item">💻 Console</a>
+                    <a href="logs.html" class="nav-item">📜 Logs</a>
+                    <a href="performance.html" class="nav-item active">📊 Performance</a>
+                    <a href="files.html" class="nav-item">📁 Files</a>
+                    <a href="backups.html" class="nav-item">💾 Backups</a>
+                    <a href="settings.html" class="nav-item">⚙️ Settings</a>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <main class="performance-page">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <div class="header-content">
+                            <h2>Server Performance</h2>
+                            <p>Real-time monitoring and system metrics</p>
+                        </div>
+                        <div class="header-actions">
+                            <div class="refresh-indicator">
+                                <span class="refresh-dot"></span>
+                                <span>Live updates every 5s</span>
+                            </div>
+                            <select class="form-select time-range">
+                                <option>Last 5 Minutes</option>
+                                <option selected>Last 15 Minutes</option>
+                                <option>Last Hour</option>
+                                <option>Last 24 Hours</option>
+                            </select>
+                            <button class="btn btn-small">🔄 Refresh</button>
+                        </div>
+                    </div>
+
+                    <!-- Health Overview -->
+                    <section class="health-overview">
+                        <div class="health-grid">
+                            <!-- Server Status -->
+                            <div class="health-card status-card">
+                                <div class="health-header">
+                                    <h3>🖥️ Server Status</h3>
+                                    <span class="health-badge healthy">HEALTHY</span>
+                                </div>
+                                <div class="health-content">
+                                    <div class="status-indicator online">
+                                        <span class="status-dot"></span>
+                                        <span class="status-text">Online</span>
+                                    </div>
+                                    <div class="uptime-info">
+                                        <span class="uptime-label">Uptime</span>
+                                        <span class="uptime-value">2d 14h 23m</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- TPS -->
+                            <div class="health-card tps-card">
+                                <div class="health-header">
+                                    <h3>⚡ TPS (Ticks Per Second)</h3>
+                                    <span class="health-badge healthy">EXCELLENT</span>
+                                </div>
+                                <div class="health-content">
+                                    <div class="tps-display">
+                                        <span class="tps-value">20.0</span>
+                                        <span class="tps-max">/ 20</span>
+                                    </div>
+                                    <div class="tps-bar-wrapper">
+                                        <div class="tps-bar" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="tps-stats">
+                                        <span>1m: <strong>20.0</strong></span>
+                                        <span>5m: <strong>19.8</strong></span>
+                                        <span>15m: <strong>19.5</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CPU -->
+                            <div class="health-card cpu-card">
+                                <div class="health-header">
+                                    <h3>🔥 CPU Usage</h3>
+                                    <span class="health-badge moderate">MODERATE</span>
+                                </div>
+                                <div class="health-content">
+                                    <div class="gauge-container">
+                                        <div class="gauge">
+                                            <div class="gauge-fill" style="--percentage: 45;"></div>
+                                            <div class="gauge-center">
+                                                <span class="gauge-value">45%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="resource-details">
+                                        <div class="detail-row">
+                                            <span>Cores:</span>
+                                            <strong>4 / 8</strong>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Load Avg:</span>
+                                            <strong>2.34</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- RAM -->
+                            <div class="health-card ram-card">
+                                <div class="health-header">
+                                    <h3>💾 Memory Usage</h3>
+                                    <span class="health-badge healthy">GOOD</span>
+                                </div>
+                                <div class="health-content">
+                                    <div class="gauge-container">
+                                        <div class="gauge">
+                                            <div class="gauge-fill ram" style="--percentage: 62;"></div>
+                                            <div class="gauge-center">
+                                                <span class="gauge-value">62%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="resource-details">
+                                        <div class="detail-row">
+                                            <span>Used:</span>
+                                            <strong>2.5 GB</strong>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Allocated:</span>
+                                            <strong>4.0 GB</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Disk -->
+                            <div class="health-card disk-card">
+                                <div class="health-header">
+                                    <h3>💿 Disk Usage</h3>
+                                    <span class="health-badge healthy">GOOD</span>
+                                </div>
+                                <div class="health-content">
+                                    <div class="disk-usage">
+                                        <div class="disk-bar-wrapper">
+                                            <div class="disk-bar" style="width: 35%;"></div>
+                                        </div>
+                                        <div class="disk-stats">
+                                            <span class="disk-used">35.2 GB</span>
+                                            <span class="disk-separator">/</span>
+                                            <span class="disk-total">100 GB</span>
+                                        </div>
+                                    </div>
+                                    <div class="disk-details">
+                                        <div class="detail-row">
+                                            <span>World Size:</span>
+                                            <strong>12.4 GB</strong>
+                                        </div>
+                                        <div class="detail-row">
+                                            <span>Backups:</span>
+                                            <strong>18.2 GB</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Players -->
+                            <div class="health-card players-card">
+                                <div class="health-header">
+                                    <h3>👥 Online Players</h3>
+                                    <span class="health-badge info">ACTIVE</span>
+                                </div>
+                                <div class="health-content">
+                                    <div class="players-display">
+                                        <span class="players-current">8</span>
+                                        <span class="players-max">/ 20</span>
+                                    </div>
+                                    <div class="players-bar-wrapper">
+                                        <div class="players-bar" style="width: 40%;"></div>
+                                    </div>
+                                    <div class="players-stats">
+                                        <span>Peak Today: <strong>12</strong></span>
+                                        <span>Avg: <strong>6</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Performance Charts -->
+                    <section class="charts-section">
+                        <div class="section-header">
+                            <h3>📈 Performance History</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" data-chart="tps">TPS</button>
+                                <button class="chart-btn" data-chart="cpu">CPU</button>
+                                <button class="chart-btn" data-chart="ram">RAM</button>
+                                <button class="chart-btn" data-chart="players">Players</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-area" id="main-chart">
+                                <!-- TPS Chart (CSS-based visualization) -->
+                                <div class="chart-grid">
+                                    <div class="chart-y-axis">
+                                        <span>20</span>
+                                        <span>15</span>
+                                        <span>10</span>
+                                        <span>5</span>
+                                        <span>0</span>
+                                    </div>
+                                    <div class="chart-bars">
+                                        <div class="chart-bar" style="--height: 100%;" data-value="20.0"></div>
+                                        <div class="chart-bar" style="--height: 100%;" data-value="20.0"></div>
+                                        <div class="chart-bar" style="--height: 98%;" data-value="19.6"></div>
+                                        <div class="chart-bar" style="--height: 100%;" data-value="20.0"></div>
+                                        <div class="chart-bar" style="--height: 95%;" data-value="19.0"></div>
+                                        <div class="chart-bar warning" style="--height: 75%;" data-value="15.0"></div>
+                                        <div class="chart-bar" style="--height: 90%;" data-value="18.0"></div>
+                                        <div class="chart-bar" style="--height: 100%;" data-value="20.0"></div>
+                                        <div class="chart-bar" style="--height: 100%;" data-value="20.0"></div>
+                                        <div class="chart-bar" style="--height: 98%;" data-value="19.6"></div>
+                                        <div class="chart-bar" style="--height: 100%;" data-value="20.0"></div>
+                                        <div class="chart-bar" style="--height: 100%;" data-value="20.0"></div>
+                                        <div class="chart-bar" style="--height: 97%;" data-value="19.4"></div>
+                                        <div class="chart-bar" style="--height: 100%;" data-value="20.0"></div>
+                                        <div class="chart-bar" style="--height: 100%;" data-value="20.0"></div>
+                                    </div>
+                                    <div class="chart-x-axis">
+                                        <span>15m ago</span>
+                                        <span>10m ago</span>
+                                        <span>5m ago</span>
+                                        <span>Now</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color good"></span>
+                                    <span>Good (18-20 TPS)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color warning"></span>
+                                    <span>Warning (10-18 TPS)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color critical"></span>
+                                    <span>Critical (&lt;10 TPS)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Detailed Metrics Grid -->
+                    <div class="metrics-grid">
+                        <!-- Java Process -->
+                        <section class="metrics-card java-metrics">
+                            <div class="section-header">
+                                <h3>☕ Java Process</h3>
+                            </div>
+                            <div class="metrics-content">
+                                <div class="metric-item">
+                                    <span class="metric-label">Heap Memory</span>
+                                    <div class="metric-bar-wrapper">
+                                        <div class="metric-bar" style="width: 58%;"></div>
+                                    </div>
+                                    <span class="metric-value">2.3 GB / 4 GB</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Non-Heap Memory</span>
+                                    <div class="metric-bar-wrapper">
+                                        <div class="metric-bar" style="width: 42%;"></div>
+                                    </div>
+                                    <span class="metric-value">168 MB / 400 MB</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">GC Pause Time</span>
+                                    <div class="metric-bar-wrapper">
+                                        <div class="metric-bar good" style="width: 15%;"></div>
+                                    </div>
+                                    <span class="metric-value">45ms avg</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Threads</span>
+                                    <div class="metric-bar-wrapper">
+                                        <div class="metric-bar" style="width: 35%;"></div>
+                                    </div>
+                                    <span class="metric-value">47 active</span>
+                                </div>
+                            </div>
+                            <div class="metrics-footer">
+                                <span class="java-version">Java 21.0.1 (OpenJDK)</span>
+                                <button class="btn btn-small">🔍 Details</button>
+                            </div>
+                        </section>
+
+                        <!-- World Stats -->
+                        <section class="metrics-card world-metrics">
+                            <div class="section-header">
+                                <h3>🌍 World Statistics</h3>
+                            </div>
+                            <div class="metrics-content">
+                                <div class="world-stat-grid">
+                                    <div class="world-stat">
+                                        <span class="stat-icon">🧱</span>
+                                        <div class="stat-info">
+                                            <span class="stat-value">156</span>
+                                            <span class="stat-label">Chunks Loaded</span>
+                                        </div>
+                                    </div>
+                                    <div class="world-stat">
+                                        <span class="stat-icon">🐄</span>
+                                        <div class="stat-info">
+                                            <span class="stat-value">1,247</span>
+                                            <span class="stat-label">Entities</span>
+                                        </div>
+                                    </div>
+                                    <div class="world-stat">
+                                        <span class="stat-icon">🔲</span>
+                                        <div class="stat-info">
+                                            <span class="stat-value">89</span>
+                                            <span class="stat-label">Tile Entities</span>
+                                        </div>
+                                    </div>
+                                    <div class="world-stat">
+                                        <span class="stat-icon">📦</span>
+                                        <div class="stat-info">
+                                            <span class="stat-value">234</span>
+                                            <span class="stat-label">Dropped Items</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="metrics-footer">
+                                <span class="world-time">Day 127, 14:35</span>
+                                <button class="btn btn-small">🗺️ World Info</button>
+                            </div>
+                        </section>
+
+                        <!-- Network Stats -->
+                        <section class="metrics-card network-metrics">
+                            <div class="section-header">
+                                <h3>🌐 Network</h3>
+                            </div>
+                            <div class="metrics-content">
+                                <div class="network-stat-grid">
+                                    <div class="network-stat incoming">
+                                        <span class="stat-icon">📥</span>
+                                        <div class="stat-info">
+                                            <span class="stat-value">1.2 MB/s</span>
+                                            <span class="stat-label">Incoming</span>
+                                        </div>
+                                    </div>
+                                    <div class="network-stat outgoing">
+                                        <span class="stat-icon">📤</span>
+                                        <div class="stat-info">
+                                            <span class="stat-value">3.4 MB/s</span>
+                                            <span class="stat-label">Outgoing</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ping-stats">
+                                    <h4>Player Ping</h4>
+                                    <div class="ping-grid">
+                                        <div class="ping-item good">
+                                            <span class="ping-player">Steve</span>
+                                            <span class="ping-value">23ms</span>
+                                        </div>
+                                        <div class="ping-item good">
+                                            <span class="ping-player">Alex</span>
+                                            <span class="ping-value">45ms</span>
+                                        </div>
+                                        <div class="ping-item moderate">
+                                            <span class="ping-player">Herobrine</span>
+                                            <span class="ping-value">89ms</span>
+                                        </div>
+                                        <div class="ping-item poor">
+                                            <span class="ping-player">Notch</span>
+                                            <span class="ping-value">234ms</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- System Info -->
+                        <section class="metrics-card system-metrics">
+                            <div class="section-header">
+                                <h3>🖥️ System Information</h3>
+                            </div>
+                            <div class="metrics-content">
+                                <div class="system-info-grid">
+                                    <div class="system-info-item">
+                                        <span class="info-label">Operating System</span>
+                                        <span class="info-value">Ubuntu 24.04 LTS</span>
+                                    </div>
+                                    <div class="system-info-item">
+                                        <span class="info-label">Kernel</span>
+                                        <span class="info-value">6.8.0-90-generic</span>
+                                    </div>
+                                    <div class="system-info-item">
+                                        <span class="info-label">CPU Model</span>
+                                        <span class="info-value">Intel i7-9700K @ 3.60GHz</span>
+                                    </div>
+                                    <div class="system-info-item">
+                                        <span class="info-label">Total RAM</span>
+                                        <span class="info-value">16 GB DDR4</span>
+                                    </div>
+                                    <div class="system-info-item">
+                                        <span class="info-label">Disk Type</span>
+                                        <span class="info-value">NVMe SSD</span>
+                                    </div>
+                                    <div class="system-info-item">
+                                        <span class="info-label">Temperature</span>
+                                        <span class="info-value temp-good">45°C</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Alerts Section -->
+                    <section class="alerts-section">
+                        <div class="section-header">
+                            <h3>⚠️ Active Alerts</h3>
+                            <div class="section-actions">
+                                <button class="btn btn-small">🔕 Mute All</button>
+                                <button class="btn btn-small">⚙️ Configure</button>
+                            </div>
+                        </div>
+                        <div class="alerts-list">
+                            <div class="alert-item warning">
+                                <div class="alert-icon">⚠️</div>
+                                <div class="alert-content">
+                                    <div class="alert-title">High Memory Usage</div>
+                                    <div class="alert-message">Memory usage exceeded 60% threshold. Consider allocating more RAM.</div>
+                                    <div class="alert-time">15 minutes ago</div>
+                                </div>
+                                <div class="alert-actions">
+                                    <button class="btn btn-small">👁️ View</button>
+                                    <button class="btn btn-small">✓ Dismiss</button>
+                                </div>
+                            </div>
+                            <div class="alert-item info">
+                                <div class="alert-icon">ℹ️</div>
+                                <div class="alert-content">
+                                    <div class="alert-title">TPS Recovery</div>
+                                    <div class="alert-message">Server TPS has recovered to normal levels (20.0 TPS).</div>
+                                    <div class="alert-time">32 minutes ago</div>
+                                </div>
+                                <div class="alert-actions">
+                                    <button class="btn btn-small">✓ Dismiss</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="no-alerts" style="display: none;">
+                            <span class="no-alerts-icon">✅</span>
+                            <span class="no-alerts-text">No active alerts. Server is running smoothly!</span>
+                        </div>
+                    </section>
+
+                    <!-- Optimization Tips -->
+                    <section class="optimization-section">
+                        <div class="section-header">
+                            <h3>💡 Optimization Suggestions</h3>
+                        </div>
+                        <div class="tips-grid">
+                            <div class="tip-card">
+                                <div class="tip-icon">🧹</div>
+                                <div class="tip-content">
+                                    <h4>Clear Dropped Items</h4>
+                                    <p>234 dropped items detected. Running /kill @e[type=item] can improve performance.</p>
+                                </div>
+                                <button class="btn btn-small btn-primary">Apply</button>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">🐄</div>
+                                <div class="tip-content">
+                                    <h4>Entity Count High</h4>
+                                    <p>Consider reducing mob caps or removing excess entities in loaded chunks.</p>
+                                </div>
+                                <button class="btn btn-small">Learn More</button>
+                            </div>
+                            <div class="tip-card">
+                                <div class="tip-icon">💾</div>
+                                <div class="tip-content">
+                                    <h4>Increase RAM</h4>
+                                    <p>Memory usage is at 62%. Allocating 6GB instead of 4GB may help.</p>
+                                </div>
+                                <button class="btn btn-small">Configure</button>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

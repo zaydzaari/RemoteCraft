@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs - Minecraft Manager</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/logs.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1>🎮 Minecraft Manager</h1>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="nav-item">🎮 Dashboard</a>
+                    <a href="servers.html" class="nav-item">🖥️ Servers</a>
+                    <a href="players.html" class="nav-item">👥 Players</a>
+                    <a href="console.html" class="nav-item">💻 Console</a>
+                    <a href="logs.html" class="nav-item active">📜 Logs</a>
+                    <a href="performance.html" class="nav-item">📊 Performance</a>
+                    <a href="files.html" class="nav-item">📁 Files</a>
+                    <a href="backups.html" class="nav-item">💾 Backups</a>
+                    <a href="settings.html" class="nav-item">⚙️ Settings</a>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <main class="logs-page">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <div class="header-content">
+                            <h2>Server Logs</h2>
+                            <p>View, search, and analyze server log files</p>
+                        </div>
+                        <div class="header-actions">
+                            <button class="btn btn-small">🔄 Refresh</button>
+                            <button class="btn btn-small btn-primary">📥 Download All</button>
+                        </div>
+                    </div>
+
+                    <!-- Log Stats Overview -->
+                    <section class="log-stats">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">📄</div>
+                                <div class="stat-info">
+                                    <h3>Total Log Files</h3>
+                                    <div class="stat-value">24 Files</div>
+                                    <div class="stat-detail">156 MB total</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📅</div>
+                                <div class="stat-info">
+                                    <h3>Date Range</h3>
+                                    <div class="stat-value">30 Days</div>
+                                    <div class="stat-detail">Dec 1 - Dec 31</div>
+                                </div>
+                            </div>
+                            <div class="stat-card warning">
+                                <div class="stat-icon">⚠️</div>
+                                <div class="stat-info">
+                                    <h3>Warnings</h3>
+                                    <div class="stat-value">47</div>
+                                    <div class="stat-detail">Last 24 hours</div>
+                                </div>
+                            </div>
+                            <div class="stat-card error">
+                                <div class="stat-icon">❌</div>
+                                <div class="stat-info">
+                                    <h3>Errors</h3>
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-detail">Last 24 hours</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Main Content Grid -->
+                    <div class="logs-grid">
+                        <!-- Log Files List -->
+                        <section class="log-files-section">
+                            <div class="section-header">
+                                <h3>📁 Log Files</h3>
+                                <div class="section-actions">
+                                    <select class="form-select">
+                                        <option>All Files</option>
+                                        <option>This Week</option>
+                                        <option>This Month</option>
+                                        <option>Archived Only</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="log-files-list">
+                                <!-- Current Log -->
+                                <div class="log-file-item current">
+                                    <div class="file-icon">📄</div>
+                                    <div class="file-info">
+                                        <div class="file-name">latest.log</div>
+                                        <div class="file-meta">
+                                            <span class="file-size">2.4 MB</span>
+                                            <span class="file-date">Now (Live)</span>
+                                        </div>
+                                    </div>
+                                    <div class="file-badge live">LIVE</div>
+                                    <div class="file-actions">
+                                        <button class="btn btn-small">👁️ View</button>
+                                        <button class="btn btn-small">📥 Download</button>
+                                    </div>
+                                </div>
+
+                                <!-- Archived Logs -->
+                                <div class="log-file-item">
+                                    <div class="file-icon">📦</div>
+                                    <div class="file-info">
+                                        <div class="file-name">2024-12-25-1.log.gz</div>
+                                        <div class="file-meta">
+                                            <span class="file-size">1.8 MB</span>
+                                            <span class="file-date">Dec 25, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="file-actions">
+                                        <button class="btn btn-small">👁️ View</button>
+                                        <button class="btn btn-small">📥 Download</button>
+                                        <button class="btn btn-small btn-danger">🗑️</button>
+                                    </div>
+                                </div>
+
+                                <div class="log-file-item">
+                                    <div class="file-icon">📦</div>
+                                    <div class="file-info">
+                                        <div class="file-name">2024-12-24-1.log.gz</div>
+                                        <div class="file-meta">
+                                            <span class="file-size">3.2 MB</span>
+                                            <span class="file-date">Dec 24, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="file-actions">
+                                        <button class="btn btn-small">👁️ View</button>
+                                        <button class="btn btn-small">📥 Download</button>
+                                        <button class="btn btn-small btn-danger">🗑️</button>
+                                    </div>
+                                </div>
+
+                                <div class="log-file-item">
+                                    <div class="file-icon">📦</div>
+                                    <div class="file-info">
+                                        <div class="file-name">2024-12-23-1.log.gz</div>
+                                        <div class="file-meta">
+                                            <span class="file-size">2.1 MB</span>
+                                            <span class="file-date">Dec 23, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="file-actions">
+                                        <button class="btn btn-small">👁️ View</button>
+                                        <button class="btn btn-small">📥 Download</button>
+                                        <button class="btn btn-small btn-danger">🗑️</button>
+                                    </div>
+                                </div>
+
+                                <div class="log-file-item">
+                                    <div class="file-icon">📦</div>
+                                    <div class="file-info">
+                                        <div class="file-name">2024-12-22-1.log.gz</div>
+                                        <div class="file-meta">
+                                            <span class="file-size">1.5 MB</span>
+                                            <span class="file-date">Dec 22, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="file-actions">
+                                        <button class="btn btn-small">👁️ View</button>
+                                        <button class="btn btn-small">📥 Download</button>
+                                        <button class="btn btn-small btn-danger">🗑️</button>
+                                    </div>
+                                </div>
+
+                                <div class="log-file-item">
+                                    <div class="file-icon">📦</div>
+                                    <div class="file-info">
+                                        <div class="file-name">2024-12-21-1.log.gz</div>
+                                        <div class="file-meta">
+                                            <span class="file-size">2.8 MB</span>
+                                            <span class="file-date">Dec 21, 2024</span>
+                                        </div>
+                                    </div>
+                                    <div class="file-actions">
+                                        <button class="btn btn-small">👁️ View</button>
+                                        <button class="btn btn-small">📥 Download</button>
+                                        <button class="btn btn-small btn-danger">🗑️</button>
+                                    </div>
+                                </div>
+
+                                <!-- Load More -->
+                                <button class="load-more-btn">📄 Load More (18 more files)</button>
+                            </div>
+                        </section>
+
+                        <!-- Log Viewer -->
+                        <section class="log-viewer-section">
+                            <div class="section-header">
+                                <h3>📖 Log Viewer</h3>
+                                <div class="viewer-info">
+                                    <span class="viewing-file">Viewing: <strong>latest.log</strong></span>
+                                </div>
+                            </div>
+
+                            <!-- Search & Filter Bar -->
+                            <div class="log-toolbar">
+                                <div class="search-group">
+                                    <input type="text" class="form-input search-input" placeholder="Search logs... (regex supported)">
+                                    <button class="btn btn-small btn-primary">🔍 Search</button>
+                                    <button class="btn btn-small">✖️ Clear</button>
+                                </div>
+                                <div class="filter-group">
+                                    <select class="form-select">
+                                        <option>All Levels</option>
+                                        <option>INFO only</option>
+                                        <option>WARN only</option>
+                                        <option>ERROR only</option>
+                                    </select>
+                                    <select class="form-select">
+                                        <option>All Threads</option>
+                                        <option>Server thread</option>
+                                        <option>Worker threads</option>
+                                        <option>RCON thread</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Filter Tags -->
+                            <div class="filter-tags">
+                                <span class="filter-label">Quick filters:</span>
+                                <button class="filter-tag active" data-filter="all">All</button>
+                                <button class="filter-tag" data-filter="info">INFO</button>
+                                <button class="filter-tag warning" data-filter="warn">WARN</button>
+                                <button class="filter-tag error" data-filter="error">ERROR</button>
+                                <button class="filter-tag chat" data-filter="chat">Chat</button>
+                                <button class="filter-tag join" data-filter="join">Join/Leave</button>
+                                <button class="filter-tag command" data-filter="command">Commands</button>
+                                <button class="filter-tag achievement" data-filter="achievement">Achievements</button>
+                            </div>
+
+                            <!-- Log Content -->
+                            <div class="log-content" id="log-content">
+                                <div class="log-line info" data-line="1">
+                                    <span class="line-number">1</span>
+                                    <span class="line-time">[19:30:01]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Starting minecraft server version 1.21.3</span>
+                                </div>
+                                <div class="log-line info" data-line="2">
+                                    <span class="line-number">2</span>
+                                    <span class="line-time">[19:30:01]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Loading properties</span>
+                                </div>
+                                <div class="log-line info" data-line="3">
+                                    <span class="line-number">3</span>
+                                    <span class="line-time">[19:30:01]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Default game type: SURVIVAL</span>
+                                </div>
+                                <div class="log-line info" data-line="4">
+                                    <span class="line-number">4</span>
+                                    <span class="line-time">[19:30:02]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Generating keypair</span>
+                                </div>
+                                <div class="log-line info" data-line="5">
+                                    <span class="line-number">5</span>
+                                    <span class="line-time">[19:30:02]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Starting Minecraft server on *:25565</span>
+                                </div>
+                                <div class="log-line info" data-line="6">
+                                    <span class="line-number">6</span>
+                                    <span class="line-time">[19:30:03]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Preparing level "world"</span>
+                                </div>
+                                <div class="log-line info" data-line="7">
+                                    <span class="line-number">7</span>
+                                    <span class="line-time">[19:30:05]</span>
+                                    <span class="line-thread">[Worker-Main-1/INFO]</span>
+                                    <span class="line-text">Preparing spawn area: 50%</span>
+                                </div>
+                                <div class="log-line success" data-line="8">
+                                    <span class="line-number">8</span>
+                                    <span class="line-time">[19:30:10]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Done (9.234s)! For help, type "help"</span>
+                                </div>
+                                <div class="log-line join" data-line="9">
+                                    <span class="line-number">9</span>
+                                    <span class="line-time">[19:32:45]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Steve[/192.168.1.100:52341] logged in with entity id 1 at (-124.5, 64.0, 256.3)</span>
+                                </div>
+                                <div class="log-line join" data-line="10">
+                                    <span class="line-number">10</span>
+                                    <span class="line-time">[19:32:45]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Steve joined the game</span>
+                                </div>
+                                <div class="log-line chat" data-line="11">
+                                    <span class="line-number">11</span>
+                                    <span class="line-time">[19:33:12]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">&lt;Steve&gt; Hello everyone!</span>
+                                </div>
+                                <div class="log-line achievement" data-line="12">
+                                    <span class="line-number">12</span>
+                                    <span class="line-time">[19:36:15]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Steve has made the advancement [Getting Wood]</span>
+                                </div>
+                                <div class="log-line warning" data-line="13">
+                                    <span class="line-number">13</span>
+                                    <span class="line-time">[19:38:00]</span>
+                                    <span class="line-thread">[Server thread/WARN]</span>
+                                    <span class="line-text">Can't keep up! Is the server overloaded? Running 2501ms or 50 ticks behind</span>
+                                </div>
+                                <div class="log-line command" data-line="14">
+                                    <span class="line-number">14</span>
+                                    <span class="line-time">[19:41:00]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">[Steve: Gave 64 [Diamond] to Steve]</span>
+                                </div>
+                                <div class="log-line error" data-line="15">
+                                    <span class="line-number">15</span>
+                                    <span class="line-time">[19:46:00]</span>
+                                    <span class="line-thread">[Server thread/ERROR]</span>
+                                    <span class="line-text">Entity player/Alex is at chunk -6,3 but is also in chunk -5,3</span>
+                                </div>
+                                <div class="log-line leave" data-line="16">
+                                    <span class="line-number">16</span>
+                                    <span class="line-time">[19:50:12]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Alex left the game</span>
+                                </div>
+                                <div class="log-line info" data-line="17">
+                                    <span class="line-number">17</span>
+                                    <span class="line-time">[19:55:00]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Saving the game (this may take a moment!)</span>
+                                </div>
+                                <div class="log-line info" data-line="18">
+                                    <span class="line-number">18</span>
+                                    <span class="line-time">[19:55:01]</span>
+                                    <span class="line-thread">[Server thread/INFO]</span>
+                                    <span class="line-text">Saved the game</span>
+                                </div>
+                            </div>
+
+                            <!-- Log Viewer Controls -->
+                            <div class="viewer-controls">
+                                <div class="controls-left">
+                                    <span class="line-info">Showing lines 1-18 of 1,247</span>
+                                </div>
+                                <div class="controls-right">
+                                    <button class="btn btn-small">⬆️ Top</button>
+                                    <button class="btn btn-small">⬇️ Bottom</button>
+                                    <button class="btn btn-small">📋 Copy Selected</button>
+                                    <button class="btn btn-small">📥 Download Log</button>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Log Analysis -->
+                    <section class="log-analysis">
+                        <div class="section-header">
+                            <h3>📊 Log Analysis</h3>
+                            <div class="section-actions">
+                                <select class="form-select">
+                                    <option>Last 24 Hours</option>
+                                    <option>Last 7 Days</option>
+                                    <option>Last 30 Days</option>
+                                    <option>All Time</option>
+                                </select>
+                                <button class="btn btn-small">🔄 Refresh Analysis</button>
+                            </div>
+                        </div>
+                        <div class="analysis-grid">
+                            <!-- Log Level Distribution -->
+                            <div class="analysis-card">
+                                <h4>📈 Log Level Distribution</h4>
+                                <div class="distribution-bars">
+                                    <div class="bar-item">
+                                        <span class="bar-label">INFO</span>
+                                        <div class="bar-wrapper">
+                                            <div class="bar info" style="width: 78%;"></div>
+                                        </div>
+                                        <span class="bar-value">78%</span>
+                                    </div>
+                                    <div class="bar-item">
+                                        <span class="bar-label">WARN</span>
+                                        <div class="bar-wrapper">
+                                            <div class="bar warning" style="width: 15%;"></div>
+                                        </div>
+                                        <span class="bar-value">15%</span>
+                                    </div>
+                                    <div class="bar-item">
+                                        <span class="bar-label">ERROR</span>
+                                        <div class="bar-wrapper">
+                                            <div class="bar error" style="width: 7%;"></div>
+                                        </div>
+                                        <span class="bar-value">7%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Common Errors -->
+                            <div class="analysis-card">
+                                <h4>❌ Common Errors</h4>
+                                <div class="common-list">
+                                    <div class="common-item">
+                                        <span class="common-count">23</span>
+                                        <span class="common-text">Can't keep up! Server overloaded</span>
+                                    </div>
+                                    <div class="common-item">
+                                        <span class="common-count">8</span>
+                                        <span class="common-text">Entity position mismatch</span>
+                                    </div>
+                                    <div class="common-item">
+                                        <span class="common-count">5</span>
+                                        <span class="common-text">Connection reset by peer</span>
+                                    </div>
+                                    <div class="common-item">
+                                        <span class="common-count">3</span>
+                                        <span class="common-text">Chunk loading timeout</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Player Activity -->
+                            <div class="analysis-card">
+                                <h4>👥 Player Activity</h4>
+                                <div class="activity-stats">
+                                    <div class="activity-item">
+                                        <span class="activity-label">Total Joins</span>
+                                        <span class="activity-value">156</span>
+                                    </div>
+                                    <div class="activity-item">
+                                        <span class="activity-label">Total Leaves</span>
+                                        <span class="activity-value">152</span>
+                                    </div>
+                                    <div class="activity-item">
+                                        <span class="activity-label">Unique Players</span>
+                                        <span class="activity-value">23</span>
+                                    </div>
+                                    <div class="activity-item">
+                                        <span class="activity-label">Chat Messages</span>
+                                        <span class="activity-value">847</span>
+                                    </div>
+                                    <div class="activity-item">
+                                        <span class="activity-label">Commands Run</span>
+                                        <span class="activity-value">234</span>
+                                    </div>
+                                    <div class="activity-item">
+                                        <span class="activity-label">Achievements</span>
+                                        <span class="activity-value">67</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Peak Hours -->
+                            <div class="analysis-card">
+                                <h4>⏰ Peak Hours</h4>
+                                <div class="peak-hours">
+                                    <div class="hour-bar" style="--height: 20%;" data-hour="00">
+                                        <span class="hour-label">12a</span>
+                                    </div>
+                                    <div class="hour-bar" style="--height: 10%;" data-hour="01"></div>
+                                    <div class="hour-bar" style="--height: 5%;" data-hour="02"></div>
+                                    <div class="hour-bar" style="--height: 3%;" data-hour="03"></div>
+                                    <div class="hour-bar" style="--height: 2%;" data-hour="04"></div>
+                                    <div class="hour-bar" style="--height: 5%;" data-hour="05"></div>
+                                    <div class="hour-bar" style="--height: 15%;" data-hour="06">
+                                        <span class="hour-label">6a</span>
+                                    </div>
+                                    <div class="hour-bar" style="--height: 25%;" data-hour="07"></div>
+                                    <div class="hour-bar" style="--height: 35%;" data-hour="08"></div>
+                                    <div class="hour-bar" style="--height: 40%;" data-hour="09"></div>
+                                    <div class="hour-bar" style="--height: 45%;" data-hour="10"></div>
+                                    <div class="hour-bar" style="--height: 50%;" data-hour="11"></div>
+                                    <div class="hour-bar" style="--height: 55%;" data-hour="12">
+                                        <span class="hour-label">12p</span>
+                                    </div>
+                                    <div class="hour-bar" style="--height: 60%;" data-hour="13"></div>
+                                    <div class="hour-bar" style="--height: 65%;" data-hour="14"></div>
+                                    <div class="hour-bar" style="--height: 70%;" data-hour="15"></div>
+                                    <div class="hour-bar" style="--height: 80%;" data-hour="16"></div>
+                                    <div class="hour-bar" style="--height: 90%;" data-hour="17"></div>
+                                    <div class="hour-bar peak" style="--height: 100%;" data-hour="18">
+                                        <span class="hour-label">6p</span>
+                                    </div>
+                                    <div class="hour-bar" style="--height: 95%;" data-hour="19"></div>
+                                    <div class="hour-bar" style="--height: 85%;" data-hour="20"></div>
+                                    <div class="hour-bar" style="--height: 70%;" data-hour="21"></div>
+                                    <div class="hour-bar" style="--height: 50%;" data-hour="22"></div>
+                                    <div class="hour-bar" style="--height: 30%;" data-hour="23"></div>
+                                </div>
+                                <div class="peak-info">
+                                    <span>Peak activity: <strong>6:00 PM - 8:00 PM</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Crash Reports -->
+                    <section class="crash-reports">
+                        <div class="section-header">
+                            <h3>💥 Crash Reports</h3>
+                            <div class="section-actions">
+                                <button class="btn btn-small">🗑️ Clear Old Reports</button>
+                            </div>
+                        </div>
+                        <div class="crash-list">
+                            <div class="crash-item">
+                                <div class="crash-icon">💥</div>
+                                <div class="crash-info">
+                                    <div class="crash-title">crash-2024-12-20_15.23.45-server.txt</div>
+                                    <div class="crash-meta">
+                                        <span class="crash-date">Dec 20, 2024 at 3:23 PM</span>
+                                        <span class="crash-cause">OutOfMemoryError: Java heap space</span>
+                                    </div>
+                                </div>
+                                <div class="crash-actions">
+                                    <button class="btn btn-small">👁️ View</button>
+                                    <button class="btn btn-small">📥 Download</button>
+                                    <button class="btn btn-small btn-danger">🗑️</button>
+                                </div>
+                            </div>
+                            <div class="crash-item">
+                                <div class="crash-icon">💥</div>
+                                <div class="crash-info">
+                                    <div class="crash-title">crash-2024-12-18_09.15.22-server.txt</div>
+                                    <div class="crash-meta">
+                                        <span class="crash-date">Dec 18, 2024 at 9:15 AM</span>
+                                        <span class="crash-cause">StackOverflowError in entity tick</span>
+                                    </div>
+                                </div>
+                                <div class="crash-actions">
+                                    <button class="btn btn-small">👁️ View</button>
+                                    <button class="btn btn-small">📥 Download</button>
+                                    <button class="btn btn-small btn-danger">🗑️</button>
+                                </div>
+                            </div>
+                            <div class="no-crashes" style="display: none;">
+                                <span class="no-crashes-icon">✅</span>
+                                <span class="no-crashes-text">No recent crash reports. Server is running stable!</span>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

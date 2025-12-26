@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files - Minecraft Manager</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/files.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1>🎮 Minecraft Manager</h1>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="nav-item">🎮 Dashboard</a>
+                    <a href="servers.html" class="nav-item">🖥️ Servers</a>
+                    <a href="players.html" class="nav-item">👥 Players</a>
+                    <a href="console.html" class="nav-item">💻 Console</a>
+                    <a href="logs.html" class="nav-item">📜 Logs</a>
+                    <a href="performance.html" class="nav-item">📊 Performance</a>
+                    <a href="files.html" class="nav-item active">📁 Files</a>
+                    <a href="backups.html" class="nav-item">💾 Backups</a>
+                    <a href="settings.html" class="nav-item">⚙️ Settings</a>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <main class="files-page">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <div class="header-content">
+                            <h2>File Manager</h2>
+                            <p>Browse, edit, and manage server files</p>
+                        </div>
+                        <div class="header-actions">
+                            <button class="btn btn-small">📤 Upload Files</button>
+                            <button class="btn btn-small">📁 New Folder</button>
+                            <button class="btn btn-small">📄 New File</button>
+                            <button class="btn btn-small btn-primary">🔄 Refresh</button>
+                        </div>
+                    </div>
+
+                    <!-- Storage Overview -->
+                    <section class="storage-overview">
+                        <div class="storage-grid">
+                            <div class="storage-card">
+                                <div class="storage-icon">💿</div>
+                                <div class="storage-info">
+                                    <h3>Total Storage</h3>
+                                    <div class="storage-bar-wrapper">
+                                        <div class="storage-bar" style="width: 35%;"></div>
+                                    </div>
+                                    <div class="storage-stats">
+                                        <span class="used">35.2 GB used</span>
+                                        <span class="total">of 100 GB</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="storage-card">
+                                <div class="storage-icon">🌍</div>
+                                <div class="storage-info">
+                                    <h3>World Files</h3>
+                                    <div class="storage-value">12.4 GB</div>
+                                    <div class="storage-detail">3 dimensions</div>
+                                </div>
+                            </div>
+                            <div class="storage-card">
+                                <div class="storage-icon">🔌</div>
+                                <div class="storage-info">
+                                    <h3>Plugins/Mods</h3>
+                                    <div class="storage-value">2.1 GB</div>
+                                    <div class="storage-detail">24 plugins</div>
+                                </div>
+                            </div>
+                            <div class="storage-card">
+                                <div class="storage-icon">💾</div>
+                                <div class="storage-info">
+                                    <h3>Backups</h3>
+                                    <div class="storage-value">18.2 GB</div>
+                                    <div class="storage-detail">8 backups</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Main File Browser -->
+                    <div class="file-browser">
+                        <!-- File Tree Sidebar -->
+                        <aside class="file-tree">
+                            <div class="tree-header">
+                                <h3>📂 Server Files</h3>
+                                <button class="btn btn-small">⚙️</button>
+                            </div>
+                            <div class="tree-content">
+                                <div class="tree-item folder open root">
+                                    <span class="tree-icon">📁</span>
+                                    <span class="tree-name">minecraft</span>
+                                    <span class="tree-toggle">▼</span>
+                                </div>
+                                <div class="tree-children">
+                                    <div class="tree-item folder open">
+                                        <span class="tree-icon">📁</span>
+                                        <span class="tree-name">world</span>
+                                        <span class="tree-toggle">▼</span>
+                                    </div>
+                                    <div class="tree-children">
+                                        <div class="tree-item folder">
+                                            <span class="tree-icon">📁</span>
+                                            <span class="tree-name">playerdata</span>
+                                            <span class="tree-toggle">▶</span>
+                                        </div>
+                                        <div class="tree-item folder">
+                                            <span class="tree-icon">📁</span>
+                                            <span class="tree-name">region</span>
+                                            <span class="tree-toggle">▶</span>
+                                        </div>
+                                        <div class="tree-item folder">
+                                            <span class="tree-icon">📁</span>
+                                            <span class="tree-name">datapacks</span>
+                                            <span class="tree-toggle">▶</span>
+                                        </div>
+                                        <div class="tree-item file">
+                                            <span class="tree-icon">📄</span>
+                                            <span class="tree-name">level.dat</span>
+                                        </div>
+                                    </div>
+                                    <div class="tree-item folder">
+                                        <span class="tree-icon">📁</span>
+                                        <span class="tree-name">world_nether</span>
+                                        <span class="tree-toggle">▶</span>
+                                    </div>
+                                    <div class="tree-item folder">
+                                        <span class="tree-icon">📁</span>
+                                        <span class="tree-name">world_the_end</span>
+                                        <span class="tree-toggle">▶</span>
+                                    </div>
+                                    <div class="tree-item folder">
+                                        <span class="tree-icon">📁</span>
+                                        <span class="tree-name">plugins</span>
+                                        <span class="tree-toggle">▶</span>
+                                    </div>
+                                    <div class="tree-item folder">
+                                        <span class="tree-icon">📁</span>
+                                        <span class="tree-name">logs</span>
+                                        <span class="tree-toggle">▶</span>
+                                    </div>
+                                    <div class="tree-item folder">
+                                        <span class="tree-icon">📁</span>
+                                        <span class="tree-name">config</span>
+                                        <span class="tree-toggle">▶</span>
+                                    </div>
+                                    <div class="tree-item file config">
+                                        <span class="tree-icon">⚙️</span>
+                                        <span class="tree-name">server.properties</span>
+                                    </div>
+                                    <div class="tree-item file">
+                                        <span class="tree-icon">📄</span>
+                                        <span class="tree-name">eula.txt</span>
+                                    </div>
+                                    <div class="tree-item file jar">
+                                        <span class="tree-icon">☕</span>
+                                        <span class="tree-name">server.jar</span>
+                                    </div>
+                                    <div class="tree-item file json">
+                                        <span class="tree-icon">📋</span>
+                                        <span class="tree-name">whitelist.json</span>
+                                    </div>
+                                    <div class="tree-item file json">
+                                        <span class="tree-icon">📋</span>
+                                        <span class="tree-name">ops.json</span>
+                                    </div>
+                                    <div class="tree-item file json">
+                                        <span class="tree-icon">📋</span>
+                                        <span class="tree-name">banned-players.json</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+
+                        <!-- File List Panel -->
+                        <section class="file-list-panel">
+                            <!-- Breadcrumb Navigation -->
+                            <div class="breadcrumb">
+                                <a href="#" class="breadcrumb-item">🏠 Home</a>
+                                <span class="breadcrumb-separator">/</span>
+                                <a href="#" class="breadcrumb-item">minecraft</a>
+                                <span class="breadcrumb-separator">/</span>
+                                <span class="breadcrumb-current">world</span>
+                            </div>
+
+                            <!-- File List Toolbar -->
+                            <div class="file-toolbar">
+                                <div class="toolbar-left">
+                                    <div class="search-box">
+                                        <input type="text" placeholder="Search files..." class="search-input">
+                                        <button class="btn btn-small">🔍</button>
+                                    </div>
+                                    <select class="form-select">
+                                        <option>All Files</option>
+                                        <option>Folders Only</option>
+                                        <option>Files Only</option>
+                                        <option>Config Files</option>
+                                        <option>Log Files</option>
+                                    </select>
+                                </div>
+                                <div class="toolbar-right">
+                                    <div class="view-toggle">
+                                        <button class="view-btn active" data-view="list">📋</button>
+                                        <button class="view-btn" data-view="grid">📦</button>
+                                    </div>
+                                    <select class="form-select">
+                                        <option>Sort by Name</option>
+                                        <option>Sort by Size</option>
+                                        <option>Sort by Date</option>
+                                        <option>Sort by Type</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- File List -->
+                            <div class="file-list" id="file-list">
+                                <!-- Parent Directory -->
+                                <div class="file-item parent">
+                                    <div class="file-checkbox">
+                                        <input type="checkbox" disabled>
+                                    </div>
+                                    <div class="file-icon">📁</div>
+                                    <div class="file-name">..</div>
+                                    <div class="file-size">-</div>
+                                    <div class="file-modified">-</div>
+                                    <div class="file-actions">-</div>
+                                </div>
+
+                                <!-- Folders -->
+                                <div class="file-item folder">
+                                    <div class="file-checkbox">
+                                        <input type="checkbox">
+                                    </div>
+                                    <div class="file-icon">📁</div>
+                                    <div class="file-name">playerdata</div>
+                                    <div class="file-size">45.2 MB</div>
+                                    <div class="file-modified">2 hours ago</div>
+                                    <div class="file-actions">
+                                        <button class="action-btn" title="Open">📂</button>
+                                        <button class="action-btn" title="Rename">✏️</button>
+                                        <button class="action-btn" title="Download">📥</button>
+                                        <button class="action-btn danger" title="Delete">🗑️</button>
+                                    </div>
+                                </div>
+
+                                <div class="file-item folder">
+                                    <div class="file-checkbox">
+                                        <input type="checkbox">
+                                    </div>
+                                    <div class="file-icon">📁</div>
+                                    <div class="file-name">region</div>
+                                    <div class="file-size">8.7 GB</div>
+                                    <div class="file-modified">5 minutes ago</div>
+                                    <div class="file-actions">
+                                        <button class="action-btn" title="Open">📂</button>
+                                        <button class="action-btn" title="Rename">✏️</button>
+                                        <button class="action-btn" title="Download">📥</button>
+                                        <button class="action-btn danger" title="Delete">🗑️</button>
+                                    </div>
+                                </div>
+
+                                <div class="file-item folder">
+                                    <div class="file-checkbox">
+                                        <input type="checkbox">
+                                    </div>
+                                    <div class="file-icon">📁</div>
+                                    <div class="file-name">datapacks</div>
+                                    <div class="file-size">12.4 MB</div>
+                                    <div class="file-modified">3 days ago</div>
+                                    <div class="file-actions">
+                                        <button class="action-btn" title="Open">📂</button>
+                                        <button class="action-btn" title="Rename">✏️</button>
+                                        <button class="action-btn" title="Download">📥</button>
+                                        <button class="action-btn danger" title="Delete">🗑️</button>
+                                    </div>
+                                </div>
+
+                                <div class="file-item folder">
+                                    <div class="file-checkbox">
+                                        <input type="checkbox">
+                                    </div>
+                                    <div class="file-icon">📁</div>
+                                    <div class="file-name">advancements</div>
+                                    <div class="file-size">1.2 MB</div>
+                                    <div class="file-modified">1 hour ago</div>
+                                    <div class="file-actions">
+                                        <button class="action-btn" title="Open">📂</button>
+                                        <button class="action-btn" title="Rename">✏️</button>
+                                        <button class="action-btn" title="Download">📥</button>
+                                        <button class="action-btn danger" title="Delete">🗑️</button>
+                                    </div>
+                                </div>
+
+                                <!-- Files -->
+                                <div class="file-item file dat">
+                                    <div class="file-checkbox">
+                                        <input type="checkbox">
+                                    </div>
+                                    <div class="file-icon">📄</div>
+                                    <div class="file-name">level.dat</div>
+                                    <div class="file-size">4.2 KB</div>
+                                    <div class="file-modified">30 minutes ago</div>
+                                    <div class="file-actions">
+                                        <button class="action-btn" title="View">👁️</button>
+                                        <button class="action-btn" title="Download">📥</button>
+                                        <button class="action-btn" title="Rename">✏️</button>
+                                        <button class="action-btn danger" title="Delete">🗑️</button>
+                                    </div>
+                                </div>
+
+                                <div class="file-item file dat">
+                                    <div class="file-checkbox">
+                                        <input type="checkbox">
+                                    </div>
+                                    <div class="file-icon">📄</div>
+                                    <div class="file-name">level.dat_old</div>
+                                    <div class="file-size">4.1 KB</div>
+                                    <div class="file-modified">2 hours ago</div>
+                                    <div class="file-actions">
+                                        <button class="action-btn" title="View">👁️</button>
+                                        <button class="action-btn" title="Download">📥</button>
+                                        <button class="action-btn" title="Rename">✏️</button>
+                                        <button class="action-btn danger" title="Delete">🗑️</button>
+                                    </div>
+                                </div>
+
+                                <div class="file-item file lock">
+                                    <div class="file-checkbox">
+                                        <input type="checkbox">
+                                    </div>
+                                    <div class="file-icon">🔒</div>
+                                    <div class="file-name">session.lock</div>
+                                    <div class="file-size">3 B</div>
+                                    <div class="file-modified">Just now</div>
+                                    <div class="file-actions">
+                                        <button class="action-btn" title="View">👁️</button>
+                                        <button class="action-btn" title="Download">📥</button>
+                                        <button class="action-btn disabled" title="Locked">🔒</button>
+                                        <button class="action-btn danger disabled" title="Locked">🗑️</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- File List Footer -->
+                            <div class="file-list-footer">
+                                <div class="selection-info">
+                                    <span id="selected-count">0 items selected</span>
+                                </div>
+                                <div class="bulk-actions">
+                                    <button class="btn btn-small" disabled>📥 Download Selected</button>
+                                    <button class="btn btn-small" disabled>📋 Copy</button>
+                                    <button class="btn btn-small" disabled>✂️ Move</button>
+                                    <button class="btn btn-small btn-danger" disabled>🗑️ Delete Selected</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- File Preview / Editor Panel -->
+                        <aside class="file-preview">
+                            <div class="preview-header">
+                                <h3>📄 File Preview</h3>
+                                <button class="btn btn-small close-preview">✖️</button>
+                            </div>
+                            <div class="preview-content">
+                                <div class="preview-placeholder">
+                                    <div class="placeholder-icon">📄</div>
+                                    <div class="placeholder-text">Select a file to preview</div>
+                                    <div class="placeholder-hint">Click on any file to see its contents</div>
+                                </div>
+                            </div>
+
+                            <!-- File Info (shown when file selected) -->
+                            <div class="file-info-panel" style="display: none;">
+                                <div class="info-header">
+                                    <div class="info-icon">⚙️</div>
+                                    <div class="info-name">server.properties</div>
+                                </div>
+                                <div class="info-details">
+                                    <div class="info-row">
+                                        <span class="info-label">Size:</span>
+                                        <span class="info-value">1.2 KB</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">Type:</span>
+                                        <span class="info-value">Properties File</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">Modified:</span>
+                                        <span class="info-value">Dec 25, 2024 19:30</span>
+                                    </div>
+                                    <div class="info-row">
+                                        <span class="info-label">Permissions:</span>
+                                        <span class="info-value">rw-r--r--</span>
+                                    </div>
+                                </div>
+                                <div class="info-actions">
+                                    <button class="btn btn-small btn-primary">✏️ Edit</button>
+                                    <button class="btn btn-small">📥 Download</button>
+                                    <button class="btn btn-small btn-danger">🗑️ Delete</button>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+
+                    <!-- File Editor Modal (Inline) -->
+                    <section class="file-editor" style="display: none;">
+                        <div class="editor-header">
+                            <div class="editor-tabs">
+                                <div class="editor-tab active">
+                                    <span class="tab-icon">⚙️</span>
+                                    <span class="tab-name">server.properties</span>
+                                    <span class="tab-modified">●</span>
+                                    <button class="tab-close">✖️</button>
+                                </div>
+                            </div>
+                            <div class="editor-actions">
+                                <button class="btn btn-small">↶ Undo</button>
+                                <button class="btn btn-small">↷ Redo</button>
+                                <button class="btn btn-small btn-primary">💾 Save</button>
+                                <button class="btn btn-small">✖️ Close</button>
+                            </div>
+                        </div>
+                        <div class="editor-body">
+                            <div class="line-numbers">
+                                <span>1</span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5</span>
+                                <span>6</span>
+                                <span>7</span>
+                                <span>8</span>
+                                <span>9</span>
+                                <span>10</span>
+                                <span>11</span>
+                                <span>12</span>
+                                <span>13</span>
+                                <span>14</span>
+                                <span>15</span>
+                            </div>
+                            <textarea class="editor-textarea" spellcheck="false">
+#Minecraft server properties
+#Thu Dec 25 19:30:00 UTC 2024
+enable-jmx-monitoring=false
+rcon.port=25575
+level-seed=
+gamemode=survival
+enable-command-block=false
+enable-query=false
+generator-settings={}
+enforce-secure-profile=true
+level-name=world
+motd=A Minecraft Server
+query.port=25565
+pvp=true
+generate-structures=true</textarea>
+                        </div>
+                        <div class="editor-footer">
+                            <div class="editor-info">
+                                <span>Line 1, Column 1</span>
+                                <span>|</span>
+                                <span>UTF-8</span>
+                                <span>|</span>
+                                <span>Properties</span>
+                            </div>
+                            <div class="editor-status">
+                                <span class="status-saved">✓ Saved</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quick Access Files -->
+                    <section class="quick-access">
+                        <div class="section-header">
+                            <h3>⭐ Quick Access</h3>
+                            <div class="section-info">
+                                <span>Frequently used configuration files</span>
+                            </div>
+                        </div>
+                        <div class="quick-access-grid">
+                            <div class="quick-file">
+                                <div class="quick-icon">⚙️</div>
+                                <div class="quick-info">
+                                    <div class="quick-name">server.properties</div>
+                                    <div class="quick-path">/minecraft/server.properties</div>
+                                </div>
+                                <button class="btn btn-small">✏️ Edit</button>
+                            </div>
+                            <div class="quick-file">
+                                <div class="quick-icon">📋</div>
+                                <div class="quick-info">
+                                    <div class="quick-name">whitelist.json</div>
+                                    <div class="quick-path">/minecraft/whitelist.json</div>
+                                </div>
+                                <button class="btn btn-small">✏️ Edit</button>
+                            </div>
+                            <div class="quick-file">
+                                <div class="quick-icon">👑</div>
+                                <div class="quick-info">
+                                    <div class="quick-name">ops.json</div>
+                                    <div class="quick-path">/minecraft/ops.json</div>
+                                </div>
+                                <button class="btn btn-small">✏️ Edit</button>
+                            </div>
+                            <div class="quick-file">
+                                <div class="quick-icon">🚫</div>
+                                <div class="quick-info">
+                                    <div class="quick-name">banned-players.json</div>
+                                    <div class="quick-path">/minecraft/banned-players.json</div>
+                                </div>
+                                <button class="btn btn-small">✏️ Edit</button>
+                            </div>
+                            <div class="quick-file">
+                                <div class="quick-icon">📜</div>
+                                <div class="quick-info">
+                                    <div class="quick-name">eula.txt</div>
+                                    <div class="quick-path">/minecraft/eula.txt</div>
+                                </div>
+                                <button class="btn btn-small">✏️ Edit</button>
+                            </div>
+                            <div class="quick-file">
+                                <div class="quick-icon">📝</div>
+                                <div class="quick-info">
+                                    <div class="quick-name">latest.log</div>
+                                    <div class="quick-path">/minecraft/logs/latest.log</div>
+                                </div>
+                                <button class="btn btn-small">👁️ View</button>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

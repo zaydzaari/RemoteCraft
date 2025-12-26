@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Minecraft Manager</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1>🎮 Minecraft Manager</h1>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="nav-item active">🎮 Dashboard</a>
+                    <a href="servers.html" class="nav-item">🖥️ Servers</a>
+                    <a href="players.html" class="nav-item">👥 Players</a>
+                    <a href="console.html" class="nav-item">💻 Console</a>
+                    <a href="logs.html" class="nav-item">📜 Logs</a>
+                    <a href="performance.html" class="nav-item">📊 Performance</a>
+                    <a href="files.html" class="nav-item">📁 Files</a>
+                    <a href="backups.html" class="nav-item">💾 Backups</a>
+                    <a href="settings.html" class="nav-item">⚙️ Settings</a>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <main class="dashboard-page">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <h2>Server Dashboard</h2>
+                        <p>Monitor and control your Minecraft servers</p>
+                    </div>
+
+                    <!-- Status Overview -->
+                    <section class="status-overview">
+                        <div class="status-grid">
+                            <div class="status-card server-status">
+                                <div class="status-icon">🖥️</div>
+                                <div class="status-info">
+                                    <h3>Server Status</h3>
+                                    <div class="status-value online" id="server-status">
+                                        <span class="status-dot"></span>
+                                        Online
+                                    </div>
+                                    <div class="status-detail">Uptime: 2h 34m</div>
+                                </div>
+                            </div>
+
+                            <div class="status-card players-card">
+                                <div class="status-icon">👥</div>
+                                <div class="status-info">
+                                    <h3>Players</h3>
+                                    <div class="status-value" id="player-count">3/20</div>
+                                    <div class="status-detail">Peak today: 8</div>
+                                </div>
+                            </div>
+
+                            <div class="status-card performance-card">
+                                <div class="status-icon">⚡</div>
+                                <div class="status-info">
+                                    <h3>Performance</h3>
+                                    <div class="status-value good" id="tps">20 TPS</div>
+                                    <div class="status-detail">Running smooth</div>
+                                </div>
+                            </div>
+
+                            <div class="status-card resources-card">
+                                <div class="status-icon">📊</div>
+                                <div class="status-info">
+                                    <h3>Resources</h3>
+                                    <div class="status-value" id="ram-usage">2.1GB / 4GB</div>
+                                    <div class="status-detail">CPU: 25%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quick Controls -->
+                    <section class="quick-controls">
+                        <div class="section-header">
+                            <h3>🎛️ Server Controls</h3>
+                            <div class="section-info">
+                                <span>Quick server management</span>
+                            </div>
+                        </div>
+                        <div class="controls-grid">
+                            <button id="start-btn" class="control-btn btn-start">
+                                <span class="btn-icon">▶️</span>
+                                <div class="btn-content">
+                                    <span class="btn-title">Start Server</span>
+                                    <span class="btn-subtitle">Boot up the server</span>
+                                </div>
+                            </button>
+                            <button id="stop-btn" class="control-btn btn-stop">
+                                <span class="btn-icon">⏹️</span>
+                                <div class="btn-content">
+                                    <span class="btn-title">Stop Server</span>
+                                    <span class="btn-subtitle">Graceful shutdown</span>
+                                </div>
+                            </button>
+                            <button id="restart-btn" class="control-btn btn-restart">
+                                <span class="btn-icon">🔄</span>
+                                <div class="btn-content">
+                                    <span class="btn-title">Restart Server</span>
+                                    <span class="btn-subtitle">Stop and start</span>
+                                </div>
+                            </button>
+                            <button id="backup-btn" class="control-btn btn-backup">
+                                <span class="btn-icon">💾</span>
+                                <div class="btn-content">
+                                    <span class="btn-title">Create Backup</span>
+                                    <span class="btn-subtitle">Save current state</span>
+                                </div>
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Dashboard Grid -->
+                    <div class="dashboard-grid">
+                        <!-- Console Section -->
+                        <section class="console-section">
+                            <div class="section-header">
+                                <h3>💻 Quick Console</h3>
+                                <a href="console.html" class="btn btn-small">Open Full Console</a>
+                            </div>
+                            <div class="mini-console">
+                                <div class="console-output" id="mini-console-output">
+                                    <div class="console-line">[19:30] Server started successfully</div>
+                                    <div class="console-line">[19:31] Steve joined the game</div>
+                                    <div class="console-line">[19:32] <Steve> Hello world!</div>
+                                    <div class="console-line">[19:33] Alex joined the game</div>
+                                    <div class="console-line">[19:34] <Alex> Hey everyone!</div>
+                                </div>
+                                <div class="console-input">
+                                    <input type="text" id="command-input" placeholder="Enter command..." />
+                                    <button id="send-btn" class="btn-send">Send</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Recent Activity -->
+                        <section class="activity-section">
+                            <div class="section-header">
+                                <h3>📋 Recent Activity</h3>
+                                <a href="logs.html" class="btn btn-small">View All Logs</a>
+                            </div>
+                            <div class="activity-feed">
+                                <div class="activity-item join">
+                                    <div class="activity-icon">🟢</div>
+                                    <div class="activity-content">
+                                        <div class="activity-text">Steve joined the server</div>
+                                        <div class="activity-time">2 minutes ago</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item chat">
+                                    <div class="activity-icon">💬</div>
+                                    <div class="activity-content">
+                                        <div class="activity-text"><Steve> Built a new house!</div>
+                                        <div class="activity-time">5 minutes ago</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item join">
+                                    <div class="activity-icon">🟢</div>
+                                    <div class="activity-content">
+                                        <div class="activity-text">Alex joined the server</div>
+                                        <div class="activity-time">8 minutes ago</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item achievement">
+                                    <div class="activity-icon">🏆</div>
+                                    <div class="activity-content">
+                                        <div class="activity-text">Steve achieved "Getting Wood"</div>
+                                        <div class="activity-time">12 minutes ago</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item leave">
+                                    <div class="activity-icon">🔴</div>
+                                    <div class="activity-content">
+                                        <div class="activity-text">Notch left the server</div>
+                                        <div class="activity-time">15 minutes ago</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Quick Stats -->
+                        <section class="stats-section">
+                            <div class="section-header">
+                                <h3>📈 Quick Stats</h3>
+                                <a href="performance.html" class="btn btn-small">Detailed Stats</a>
+                            </div>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-label">World Size</div>
+                                    <div class="stat-value">1.2 GB</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Entities</div>
+                                    <div class="stat-value">1,247</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Chunks Loaded</div>
+                                    <div class="stat-value">156</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Avg Ping</div>
+                                    <div class="stat-value">23ms</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Free Disk</div>
+                                    <div class="stat-value">85.2 GB</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Server Version</div>
+                                    <div class="stat-value">1.21.3</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Online Players -->
+                        <section class="players-section">
+                            <div class="section-header">
+                                <h3>👥 Online Players</h3>
+                                <a href="players.html" class="btn btn-small">Manage Players</a>
+                            </div>
+                            <div class="players-list">
+                                <div class="player-item">
+                                    <div class="player-avatar">🧑‍🦰</div>
+                                    <div class="player-info">
+                                        <div class="player-name">Steve</div>
+                                        <div class="player-status">Playing for 2h 15m</div>
+                                    </div>
+                                    <div class="player-actions">
+                                        <button class="btn btn-small player-btn">👑</button>
+                                        <button class="btn btn-small player-btn">💬</button>
+                                    </div>
+                                </div>
+                                <div class="player-item">
+                                    <div class="player-avatar">👩‍🦳</div>
+                                    <div class="player-info">
+                                        <div class="player-name">Alex</div>
+                                        <div class="player-status">Playing for 45m</div>
+                                    </div>
+                                    <div class="player-actions">
+                                        <button class="btn btn-small player-btn">👑</button>
+                                        <button class="btn btn-small player-btn">💬</button>
+                                    </div>
+                                </div>
+                                <div class="player-item">
+                                    <div class="player-avatar">🧔</div>
+                                    <div class="player-info">
+                                        <div class="player-name">Herobrine</div>
+                                        <div class="player-status">Playing for 12m</div>
+                                    </div>
+                                    <div class="player-actions">
+                                        <button class="btn btn-small player-btn">👑</button>
+                                        <button class="btn btn-small player-btn">💬</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

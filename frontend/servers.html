@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servers - Minecraft Manager</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/servers.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1>🎮 Minecraft Manager</h1>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar (for future) -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="nav-item">🎮 Dashboard</a>
+                    <a href="servers.html" class="nav-item active">🖥️ Servers</a>
+                    <a href="players.html" class="nav-item">👥 Players</a>
+                    <a href="console.html" class="nav-item">💻 Console</a>
+                    <a href="logs.html" class="nav-item">📜 Logs</a>
+                    <a href="performance.html" class="nav-item">📊 Performance</a>
+                    <a href="files.html" class="nav-item">📁 Files</a>
+                    <a href="backups.html" class="nav-item">💾 Backups</a>
+                    <a href="settings.html" class="nav-item">⚙️ Settings</a>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <main class="servers-page">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <h2>Server Management</h2>
+                        <p>Create, configure, and manage your Minecraft servers</p>
+                    </div>
+
+                    <!-- Create New Server Section -->
+                    <section class="create-server-section">
+                        <div class="section-header">
+                            <h3>🆕 Create New Server</h3>
+                        </div>
+                        <div class="create-server-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Server Name</label>
+                                    <input type="text" placeholder="my-awesome-server" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Server Type</label>
+                                    <select class="form-select">
+                                        <option>Vanilla</option>
+                                        <option>Paper</option>
+                                        <option>Spigot</option>
+                                        <option>Fabric</option>
+                                        <option>Forge</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Minecraft Version</label>
+                                    <select class="form-select">
+                                        <option>1.21.3 (Latest)</option>
+                                        <option>1.21.2</option>
+                                        <option>1.20.1</option>
+                                        <option>1.19.4</option>
+                                        <option>1.18.2</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>RAM Allocation</label>
+                                    <select class="form-select">
+                                        <option>2GB</option>
+                                        <option>4GB</option>
+                                        <option>6GB</option>
+                                        <option>8GB</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary">🚀 Create Server</button>
+                                <button class="btn btn-secondary">📁 Import Server</button>
+                                <button class="btn btn-secondary">📋 Clone Existing</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Server List Section -->
+                    <section class="server-list-section">
+                        <div class="section-header">
+                            <h3>📋 Your Servers</h3>
+                            <div class="section-actions">
+                                <button class="btn btn-small">🔄 Refresh</button>
+                                <button class="btn btn-small">⚙️ Bulk Actions</button>
+                            </div>
+                        </div>
+                        <div class="server-grid">
+                            <!-- Server Card 1 -->
+                            <div class="server-card">
+                                <div class="server-card-header">
+                                    <div class="server-info">
+                                        <h4>🌍 Survival Server</h4>
+                                        <span class="server-path">~/minecraft/survival</span>
+                                    </div>
+                                    <div class="server-status online">
+                                        <span class="status-dot"></span>
+                                        Online
+                                    </div>
+                                </div>
+                                <div class="server-details">
+                                    <div class="detail-item">
+                                        <span class="label">Version:</span>
+                                        <span class="value">1.21.3 Vanilla</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Players:</span>
+                                        <span class="value">3/20</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">RAM:</span>
+                                        <span class="value">2.1GB / 4GB</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Uptime:</span>
+                                        <span class="value">2h 34m</span>
+                                    </div>
+                                </div>
+                                <div class="server-actions">
+                                    <button class="btn btn-small btn-stop">⏹️ Stop</button>
+                                    <button class="btn btn-small btn-restart">🔄 Restart</button>
+                                    <button class="btn btn-small btn-console">💻 Console</button>
+                                    <button class="btn btn-small btn-settings">⚙️ Settings</button>
+                                </div>
+                            </div>
+
+                            <!-- Server Card 2 -->
+                            <div class="server-card">
+                                <div class="server-card-header">
+                                    <div class="server-info">
+                                        <h4>🎨 Creative Server</h4>
+                                        <span class="server-path">~/minecraft/creative</span>
+                                    </div>
+                                    <div class="server-status offline">
+                                        <span class="status-dot"></span>
+                                        Offline
+                                    </div>
+                                </div>
+                                <div class="server-details">
+                                    <div class="detail-item">
+                                        <span class="label">Version:</span>
+                                        <span class="value">1.20.1 Paper</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Players:</span>
+                                        <span class="value">0/50</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">RAM:</span>
+                                        <span class="value">-- / 6GB</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Last Online:</span>
+                                        <span class="value">2 days ago</span>
+                                    </div>
+                                </div>
+                                <div class="server-actions">
+                                    <button class="btn btn-small btn-start">▶️ Start</button>
+                                    <button class="btn btn-small btn-backup">💾 Backup</button>
+                                    <button class="btn btn-small btn-files">📁 Files</button>
+                                    <button class="btn btn-small btn-settings">⚙️ Settings</button>
+                                </div>
+                            </div>
+
+                            <!-- Server Card 3 -->
+                            <div class="server-card">
+                                <div class="server-card-header">
+                                    <div class="server-info">
+                                        <h4>🔧 Modded Server</h4>
+                                        <span class="server-path">~/minecraft/modded</span>
+                                    </div>
+                                    <div class="server-status offline">
+                                        <span class="status-dot"></span>
+                                        Offline
+                                    </div>
+                                </div>
+                                <div class="server-details">
+                                    <div class="detail-item">
+                                        <span class="label">Version:</span>
+                                        <span class="value">1.19.2 Forge</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Players:</span>
+                                        <span class="value">0/10</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">RAM:</span>
+                                        <span class="value">-- / 8GB</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Mods:</span>
+                                        <span class="value">47 installed</span>
+                                    </div>
+                                </div>
+                                <div class="server-actions">
+                                    <button class="btn btn-small btn-start">▶️ Start</button>
+                                    <button class="btn btn-small btn-mods">🧩 Mods</button>
+                                    <button class="btn btn-small btn-files">📁 Files</button>
+                                    <button class="btn btn-small btn-settings">⚙️ Settings</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quick Settings Section -->
+                    <section class="quick-settings-section">
+                        <div class="section-header">
+                            <h3>⚙️ Quick Server Settings</h3>
+                            <div class="section-info">
+                                <span>Configure common settings for selected server</span>
+                            </div>
+                        </div>
+                        <div class="settings-tabs">
+                            <button class="tab-button active">🎮 Game Settings</button>
+                            <button class="tab-button">🖥️ Server Config</button>
+                            <button class="tab-button">☕ JVM Settings</button>
+                            <button class="tab-button">🔌 Plugins</button>
+                        </div>
+                        <div class="settings-content">
+                            <div class="settings-grid">
+                                <div class="setting-item">
+                                    <label>Difficulty</label>
+                                    <select class="form-select">
+                                        <option>Peaceful</option>
+                                        <option>Easy</option>
+                                        <option selected>Normal</option>
+                                        <option>Hard</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <label>Game Mode</label>
+                                    <select class="form-select">
+                                        <option selected>Survival</option>
+                                        <option>Creative</option>
+                                        <option>Adventure</option>
+                                        <option>Spectator</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <label>Max Players</label>
+                                    <input type="number" value="20" class="form-input">
+                                </div>
+                                <div class="setting-item">
+                                    <label>View Distance</label>
+                                    <input type="number" value="10" class="form-input">
+                                </div>
+                                <div class="setting-item">
+                                    <label>Enable PvP</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="pvp" checked>
+                                        <label for="pvp" class="toggle-label"></label>
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <label>White-list</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="whitelist">
+                                        <label for="whitelist" class="toggle-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="settings-actions">
+                                <button class="btn btn-primary">💾 Save Settings</button>
+                                <button class="btn btn-secondary">↶ Reset</button>
+                                <button class="btn btn-secondary">📋 Export Config</button>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

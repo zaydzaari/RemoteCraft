@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Minecraft Manager</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1>🎮 Minecraft Manager</h1>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="nav-item">🎮 Dashboard</a>
+                    <a href="servers.html" class="nav-item">🖥️ Servers</a>
+                    <a href="players.html" class="nav-item">👥 Players</a>
+                    <a href="console.html" class="nav-item">💻 Console</a>
+                    <a href="logs.html" class="nav-item">📜 Logs</a>
+                    <a href="performance.html" class="nav-item">📊 Performance</a>
+                    <a href="files.html" class="nav-item">📁 Files</a>
+                    <a href="backups.html" class="nav-item">💾 Backups</a>
+                    <a href="settings.html" class="nav-item active">⚙️ Settings</a>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <main class="settings-page">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <div class="header-content">
+                            <h2>Application Settings</h2>
+                            <p>Configure the manager, connections, and default behaviors</p>
+                        </div>
+                    </div>
+
+                    <!-- Settings Grid -->
+                    <div class="settings-grid">
+                        <!-- SSH Connection Card -->
+                        <section class="settings-card">
+                            <div class="section-header">
+                                <h3>🔗 SSH Connection</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="ssh-host">Server Host</label>
+                                        <input type="text" id="ssh-host" class="form-input" placeholder="192.168.1.100">
+                                        <span class="form-hint">IP address or hostname of your server</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ssh-port">SSH Port</label>
+                                        <input type="number" id="ssh-port" class="form-input" value="22">
+                                        <span class="form-hint">Default is 22</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ssh-user">Username</label>
+                                        <input type="text" id="ssh-user" class="form-input" placeholder="zayd">
+                                        <span class="form-hint">SSH user on the server</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ssh-password">Password</label>
+                                        <input type="password" id="ssh-password" class="form-input" placeholder="••••••••">
+                                        <span class="form-hint">SSH password or key passphrase</span>
+                                    </div>
+                                    <div class="form-group full-span">
+                                        <label for="ssh-key">Private Key Path (Optional)</label>
+                                        <input type="text" id="ssh-key" class="form-input" placeholder="~/.ssh/id_rsa">
+                                        <span class="form-hint">Use key-based auth for better security</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-secondary">🔌 Disconnect</button>
+                                <button class="btn btn-primary">💾 Save & Test Connection</button>
+                            </div>
+                        </section>
+
+                        <!-- Application Behavior Card -->
+                        <section class="settings-card">
+                            <div class="section-header">
+                                <h3>🎨 Application Behavior</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="theme">Theme</label>
+                                        <select id="theme" class="form-select">
+                                            <option selected>Dark (Default)</option>
+                                            <option>Light</option>
+                                            <option>Matrix</option>
+                                            <option>High Contrast</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="refresh-rate">Auto-Refresh Rate</label>
+                                        <select id="refresh-rate" class="form-select">
+                                            <option>Disabled</option>
+                                            <option selected>Every 5 seconds</option>
+                                            <option>Every 10 seconds</option>
+                                            <option>Every 30 seconds</option>
+                                            <option>Every minute</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group full-span">
+                                        <label>Notifications</label>
+                                        <div class="settings-options">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" checked>
+                                                <span>Server starts/stops</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" checked>
+                                                <span>Player joins/leaves</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox">
+                                                <span>Server errors or warnings</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox">
+                                                <span>Backup completions</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-secondary">↶ Reset</button>
+                                <button class="btn btn-primary">💾 Save Preferences</button>
+                            </div>
+                        </section>
+
+                        <!-- Server Defaults Card -->
+                        <section class="settings-card">
+                            <div class="section-header">
+                                <h3>🖥️ Server Defaults</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="default-ram">Default RAM Allocation</label>
+                                        <select id="default-ram" class="form-select">
+                                            <option>2GB</option>
+                                            <option selected>4GB</option>
+                                            <option>6GB</option>
+                                            <option>8GB</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="default-java">Default Java Path</label>
+                                        <input type="text" id="default-java" class="form-input" placeholder="/usr/bin/java">
+                                    </div>
+                                    <div class="form-group full-span">
+                                        <label for="default-path">Default Servers Directory</label>
+                                        <input type="text" id="default-path" class="form-input" placeholder="~/minecraft/servers">
+                                        <span class="form-hint">Where new servers will be created</span>
+                                    </div>
+                                    <div class="form-group full-span">
+                                        <label for="default-jvm">Default JVM Arguments</label>
+                                        <textarea id="default-jvm" class="form-textarea" rows="3">-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-secondary">↶ Reset</button>
+                                <button class="btn btn-primary">💾 Save Defaults</button>
+                            </div>
+                        </section>
+
+                        <!-- Data Management Card -->
+                        <section class="settings-card">
+                            <div class="section-header">
+                                <h3>🔄 Data Management</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="data-actions">
+                                    <div class="data-item">
+                                        <div class="data-info">
+                                            <h4>Export Settings</h4>
+                                            <p>Save all your application settings to a JSON file.</p>
+                                        </div>
+                                        <button class="btn btn-secondary">📤 Export</button>
+                                    </div>
+                                    <div class="data-item">
+                                        <div class="data-info">
+                                            <h4>Import Settings</h4>
+                                            <p>Load application settings from a previously exported file.</p>
+                                        </div>
+                                        <button class="btn btn-secondary">📥 Import</button>
+                                    </div>
+                                    <div class="data-item danger">
+                                        <div class="data-info">
+                                            <h4>Reset Application</h4>
+                                            <p>Reset all settings to their original defaults. This cannot be undone.</p>
+                                        </div>
+                                        <button class="btn btn-danger">💀 Factory Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- About Card -->
+                        <section class="settings-card about-card">
+                            <div class="section-header">
+                                <h3>ℹ️ About</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="about-info">
+                                    <div class="info-item">
+                                        <span class="info-label">App Version:</span>
+                                        <span class="info-value">2.0.0-beta</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Last Checked:</span>
+                                        <span class="info-value">Dec 25, 2024</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Status:</span>
+                                        <span class="info-value up-to-date">✅ Up to date</span>
+                                    </div>
+                                </div>
+                                <div class="about-actions">
+                                    <button class="btn btn-primary">🔄 Check for Updates</button>
+                                    <a href="#" class="btn btn-secondary">📖 View Documentation</a>
+                                    <a href="#" class="btn btn-secondary">🐞 Report a Bug</a>
+                                    <a href="#" class="btn btn-secondary">⭐ Star on GitHub</a>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- API Information Card -->
+                        <section class="settings-card api-card">
+                            <div class="section-header">
+                                <h3>🔌 API Information</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="api-info">
+                                    <div class="info-item">
+                                        <span class="info-label">API Status:</span>
+                                        <span class="info-value connected">🟢 Connected</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">API Endpoint:</span>
+                                        <span class="info-value">http://localhost:8000</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">API Version:</span>
+                                        <span class="info-value">2.0.0</span>
+                                    </div>
+                                </div>
+                                <div class="api-actions">
+                                    <button class="btn btn-secondary">📋 Copy API Key</button>
+                                    <button class="btn btn-secondary">🔄 Regenerate Key</button>
+                                    <a href="#" class="btn btn-secondary">📚 API Docs</a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

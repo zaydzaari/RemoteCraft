@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Players - Minecraft Manager</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/players.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1>🎮 Minecraft Manager</h1>
+        </header>
+
+        <!-- Main Layout -->
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <a href="index.html" class="nav-item">🎮 Dashboard</a>
+                    <a href="servers.html" class="nav-item">🖥️ Servers</a>
+                    <a href="players.html" class="nav-item active">👥 Players</a>
+                    <a href="console.html" class="nav-item">💻 Console</a>
+                    <a href="logs.html" class="nav-item">📜 Logs</a>
+                    <a href="performance.html" class="nav-item">📊 Performance</a>
+                    <a href="files.html" class="nav-item">📁 Files</a>
+                    <a href="backups.html" class="nav-item">💾 Backups</a>
+                    <a href="settings.html" class="nav-item">⚙️ Settings</a>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <main class="players-page">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <h2>Player Management</h2>
+                        <p>Monitor and manage players on your Minecraft servers</p>
+                    </div>
+
+                    <!-- Player Overview Stats -->
+                    <section class="player-stats">
+                        <div class="stats-grid">
+                            <div class="stat-card online-players">
+                                <div class="stat-icon">🟢</div>
+                                <div class="stat-info">
+                                    <h3>Online Now</h3>
+                                    <div class="stat-value">3 Players</div>
+                                    <div class="stat-detail">Peak today: 8</div>
+                                </div>
+                            </div>
+                            <div class="stat-card total-players">
+                                <div class="stat-icon">👥</div>
+                                <div class="stat-info">
+                                    <h3>Total Players</h3>
+                                    <div class="stat-value">47 Unique</div>
+                                    <div class="stat-detail">This week: +5</div>
+                                </div>
+                            </div>
+                            <div class="stat-card playtime">
+                                <div class="stat-icon">⏰</div>
+                                <div class="stat-info">
+                                    <h3>Avg Playtime</h3>
+                                    <div class="stat-value">2.4 Hours</div>
+                                    <div class="stat-detail">Per session</div>
+                                </div>
+                            </div>
+                            <div class="stat-card whitelist">
+                                <div class="stat-icon">📋</div>
+                                <div class="stat-info">
+                                    <h3>Whitelist</h3>
+                                    <div class="stat-value">12 Players</div>
+                                    <div class="stat-detail">Enabled</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Online Players Section -->
+                    <section class="online-players-section">
+                        <div class="section-header">
+                            <h3>🟢 Currently Online (3)</h3>
+                            <div class="section-actions">
+                                <button class="btn btn-small">🔄 Refresh</button>
+                                <button class="btn btn-small">📢 Broadcast</button>
+                                <button class="btn btn-small btn-danger">⚠️ Kick All</button>
+                            </div>
+                        </div>
+                        <div class="players-grid">
+                            <!-- Online Player 1 -->
+                            <div class="player-card online">
+                                <div class="player-header">
+                                    <div class="player-avatar">🧑‍🦰</div>
+                                    <div class="player-basic-info">
+                                        <h4>Steve</h4>
+                                        <span class="player-uuid">a1b2c3d4-e5f6-7890-abcd-ef1234567890</span>
+                                    </div>
+                                    <div class="player-status online">
+                                        <span class="status-dot"></span>
+                                        Online
+                                    </div>
+                                </div>
+                                <div class="player-details">
+                                    <div class="detail-row">
+                                        <div class="detail-item">
+                                            <span class="label">Session Time:</span>
+                                            <span class="value">2h 34m</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">Location:</span>
+                                            <span class="value">Overworld (125, 64, -87)</span>
+                                        </div>
+                                    </div>
+                                    <div class="detail-row">
+                                        <div class="detail-item">
+                                            <span class="label">Health:</span>
+                                            <span class="value">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️ 20/20</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">Gamemode:</span>
+                                            <span class="value">Survival</span>
+                                        </div>
+                                    </div>
+                                    <div class="detail-row">
+                                        <div class="detail-item">
+                                            <span class="label">Ping:</span>
+                                            <span class="value">23ms</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">Role:</span>
+                                            <span class="value operator">👑 Operator</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="player-actions">
+                                    <button class="btn btn-small btn-message">💬 Message</button>
+                                    <button class="btn btn-small btn-teleport">🌀 Teleport</button>
+                                    <button class="btn btn-small btn-spectate">👁️ Spectate</button>
+                                    <button class="btn btn-small btn-warning">⚠️ Kick</button>
+                                    <button class="btn btn-small btn-danger">🔨 Ban</button>
+                                </div>
+                            </div>
+
+                            <!-- Online Player 2 -->
+                            <div class="player-card online">
+                                <div class="player-header">
+                                    <div class="player-avatar">👩‍🦳</div>
+                                    <div class="player-basic-info">
+                                        <h4>Alex</h4>
+                                        <span class="player-uuid">b2c3d4e5-f6g7-8901-bcde-f23456789012</span>
+                                    </div>
+                                    <div class="player-status online">
+                                        <span class="status-dot"></span>
+                                        Online
+                                    </div>
+                                </div>
+                                <div class="player-details">
+                                    <div class="detail-row">
+                                        <div class="detail-item">
+                                            <span class="label">Session Time:</span>
+                                            <span class="value">1h 12m</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">Location:</span>
+                                            <span class="value">Nether (45, 70, 128)</span>
+                                        </div>
+                                    </div>
+                                    <div class="detail-row">
+                                        <div class="detail-item">
+                                            <span class="label">Health:</span>
+                                            <span class="value">❤️❤️❤️❤️❤️❤️❤️🖤🖤🖤 14/20</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">Gamemode:</span>
+                                            <span class="value">Survival</span>
+                                        </div>
+                                    </div>
+                                    <div class="detail-row">
+                                        <div class="detail-item">
+                                            <span class="label">Ping:</span>
+                                            <span class="value">67ms</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">Role:</span>
+                                            <span class="value player">🎮 Player</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="player-actions">
+                                    <button class="btn btn-small btn-message">💬 Message</button>
+                                    <button class="btn btn-small btn-teleport">🌀 Teleport</button>
+                                    <button class="btn btn-small btn-heal">❤️ Heal</button>
+                                    <button class="btn btn-small btn-warning">⚠️ Kick</button>
+                                    <button class="btn btn-small btn-promote">👑 Op</button>
+                                </div>
+                            </div>
+
+                            <!-- Online Player 3 -->
+                            <div class="player-card online">
+                                <div class="player-header">
+                                    <div class="player-avatar">🧔</div>
+                                    <div class="player-basic-info">
+                                        <h4>Herobrine</h4>
+                                        <span class="player-uuid">c3d4e5f6-g7h8-9012-cdef-345678901234</span>
+                                    </div>
+                                    <div class="player-status online">
+                                        <span class="status-dot"></span>
+                                        Online
+                                    </div>
+                                </div>
+                                <div class="player-details">
+                                    <div class="detail-row">
+                                        <div class="detail-item">
+                                            <span class="label">Session Time:</span>
+                                            <span class="value">45m</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">Location:</span>
+                                            <span class="value">End (-23, 48, 156)</span>
+                                        </div>
+                                    </div>
+                                    <div class="detail-row">
+                                        <div class="detail-item">
+                                            <span class="label">Health:</span>
+                                            <span class="value">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️ 20/20</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">Gamemode:</span>
+                                            <span class="value">Creative</span>
+                                        </div>
+                                    </div>
+                                    <div class="detail-row">
+                                        <div class="detail-item">
+                                            <span class="label">Ping:</span>
+                                            <span class="value">12ms</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">Role:</span>
+                                            <span class="value player">🎮 Player</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="player-actions">
+                                    <button class="btn btn-small btn-message">💬 Message</button>
+                                    <button class="btn btn-small btn-gamemode">🎮 Gamemode</button>
+                                    <button class="btn btn-small btn-inventory">🎒 Inventory</button>
+                                    <button class="btn btn-small btn-warning">⚠️ Kick</button>
+                                    <button class="btn btn-small btn-promote">👑 Op</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Management Tabs -->
+                    <section class="player-management">
+                        <div class="section-header">
+                            <h3>📋 Player Management</h3>
+                        </div>
+                        <div class="management-tabs">
+                            <button class="tab-button active">👥 All Players</button>
+                            <button class="tab-button">📝 Whitelist</button>
+                            <button class="tab-button">🚫 Banned</button>
+                            <button class="tab-button">👑 Operators</button>
+                            <button class="tab-button">📊 Statistics</button>
+                        </div>
+
+                        <!-- All Players Tab Content -->
+                        <div class="tab-content active" id="all-players">
+                            <div class="players-table-header">
+                                <div class="table-actions">
+                                    <div class="search-box">
+                                        <input type="text" placeholder="Search players..." class="search-input">
+                                        <button class="btn btn-small">🔍</button>
+                                    </div>
+                                    <div class="filter-controls">
+                                        <select class="form-select">
+                                            <option>All Players</option>
+                                            <option>Online Only</option>
+                                            <option>Offline Only</option>
+                                            <option>Operators</option>
+                                            <option>Banned</option>
+                                        </select>
+                                        <button class="btn btn-small">📊 Export</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="players-table">
+                                <div class="table-header">
+                                    <div class="table-cell">Player</div>
+                                    <div class="table-cell">Status</div>
+                                    <div class="table-cell">Last Seen</div>
+                                    <div class="table-cell">Playtime</div>
+                                    <div class="table-cell">Role</div>
+                                    <div class="table-cell">Actions</div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell player-info">
+                                        <div class="player-avatar">🧑‍🦰</div>
+                                        <div>
+                                            <div class="player-name">Steve</div>
+                                            <div class="player-uuid">a1b2c3d4...7890</div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">
+                                        <span class="status online">🟢 Online</span>
+                                    </div>
+                                    <div class="table-cell">Now</div>
+                                    <div class="table-cell">127h 23m</div>
+                                    <div class="table-cell">
+                                        <span class="role operator">👑 Operator</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="table-actions">
+                                            <button class="btn btn-small">📋 Details</button>
+                                            <button class="btn btn-small">💬 Message</button>
+                                            <button class="btn btn-small btn-warning">⚠️ Kick</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell player-info">
+                                        <div class="player-avatar">👩‍🦳</div>
+                                        <div>
+                                            <div class="player-name">Alex</div>
+                                            <div class="player-uuid">b2c3d4e5...9012</div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">
+                                        <span class="status online">🟢 Online</span>
+                                    </div>
+                                    <div class="table-cell">Now</div>
+                                    <div class="table-cell">89h 45m</div>
+                                    <div class="table-cell">
+                                        <span class="role player">🎮 Player</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="table-actions">
+                                            <button class="btn btn-small">📋 Details</button>
+                                            <button class="btn btn-small">💬 Message</button>
+                                            <button class="btn btn-small">👑 Op</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell player-info">
+                                        <div class="player-avatar">🧔</div>
+                                        <div>
+                                            <div class="player-name">Herobrine</div>
+                                            <div class="player-uuid">c3d4e5f6...1234</div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">
+                                        <span class="status online">🟢 Online</span>
+                                    </div>
+                                    <div class="table-cell">Now</div>
+                                    <div class="table-cell">34h 12m</div>
+                                    <div class="table-cell">
+                                        <span class="role player">🎮 Player</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="table-actions">
+                                            <button class="btn btn-small">📋 Details</button>
+                                            <button class="btn btn-small">💬 Message</button>
+                                            <button class="btn btn-small">👑 Op</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell player-info">
+                                        <div class="player-avatar">👨‍🦲</div>
+                                        <div>
+                                            <div class="player-name">Notch</div>
+                                            <div class="player-uuid">d4e5f6g7...5678</div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell">
+                                        <span class="status offline">🔴 Offline</span>
+                                    </div>
+                                    <div class="table-cell">2 hours ago</div>
+                                    <div class="table-cell">256h 07m</div>
+                                    <div class="table-cell">
+                                        <span class="role operator">👑 Operator</span>
+                                    </div>
+                                    <div class="table-cell">
+                                        <div class="table-actions">
+                                            <button class="btn btn-small">📋 Details</button>
+                                            <button class="btn btn-small">📧 Email</button>
+                                            <button class="btn btn-small btn-danger">🚫 Ban</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Whitelist Tab Content -->
+                        <div class="tab-content" id="whitelist">
+                            <div class="whitelist-controls">
+                                <div class="whitelist-header">
+                                    <div class="whitelist-status">
+                                        <h4>Whitelist Status</h4>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="whitelist-toggle" checked>
+                                            <label for="whitelist-toggle" class="toggle-label"></label>
+                                        </div>
+                                        <span class="status-text">Enabled</span>
+                                    </div>
+                                    <div class="whitelist-actions">
+                                        <input type="text" placeholder="Enter player name or UUID" class="form-input">
+                                        <button class="btn btn-primary">➕ Add Player</button>
+                                        <button class="btn btn-secondary">📁 Import List</button>
+                                    </div>
+                                </div>
+                                <div class="whitelist-info">
+                                    <p>Whitelist is <strong>enabled</strong>. Only whitelisted players can join the server.</p>
+                                    <p><strong>12 players</strong> are currently whitelisted.</p>
+                                </div>
+                            </div>
+                            <!-- Whitelist player list would go here -->
+                        </div>
+
+                        <!-- Other tabs content... -->
+                    </section>
+
+                    <!-- Quick Actions -->
+                    <section class="quick-actions">
+                        <div class="section-header">
+                            <h3>⚡ Quick Actions</h3>
+                        </div>
+                        <div class="actions-grid">
+                            <button class="action-btn">
+                                <span class="action-icon">📢</span>
+                                <div class="action-content">
+                                    <span class="action-title">Broadcast Message</span>
+                                    <span class="action-subtitle">Send message to all players</span>
+                                </div>
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">🌙</span>
+                                <div class="action-content">
+                                    <span class="action-title">Set Time Night</span>
+                                    <span class="action-subtitle">Change server time</span>
+                                </div>
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">☀️</span>
+                                <div class="action-content">
+                                    <span class="action-title">Set Time Day</span>
+                                    <span class="action-subtitle">Change server time</span>
+                                </div>
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">🌧️</span>
+                                <div class="action-content">
+                                    <span class="action-title">Toggle Weather</span>
+                                    <span class="action-subtitle">Clear/Rain/Thunder</span>
+                                </div>
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">💾</span>
+                                <div class="action-content">
+                                    <span class="action-title">Save World</span>
+                                    <span class="action-subtitle">Force save all data</span>
+                                </div>
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-icon">📊</span>
+                                <div class="action-content">
+                                    <span class="action-title">Generate Report</span>
+                                    <span class="action-subtitle">Player activity report</span>
+                                </div>
+                            </button>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
