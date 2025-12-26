@@ -1,1 +1,290 @@
+/* ═══════════════════════════════════════════════════════════════
+   🎮 MINECRAFT MANAGER - GLOBAL STYLES
+   ═══════════════════════════════════════════════════════════════ */
 
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ────────── CSS VARIABLES ────────── */
+:root {
+  /* 🎨 Colors */
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card: #21262d;
+  --bg-hover: #30363d;
+  --bg-input: #0d1117;
+  
+  /* 💚 Terminal Colors */
+  --terminal-text: #58a6ff;
+  --terminal-success: #3fb950;
+  --terminal-error: #f85149;
+  --terminal-warning: #d29922;
+  
+  /* 📝 Text Colors */
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  
+  /* 🔘 Button Colors */
+  --btn-primary: #238636;
+  --btn-secondary: #21262d;
+  --btn-danger: #da3633;
+  --btn-warning: #fb8500;
+  
+  /* 📏 Layout */
+  --sidebar-width: 260px;
+  --header-height: 64px;
+  --radius: 8px;
+  --radius-small: 4px;
+  --spacing: 1rem;
+  --spacing-large: 2rem;
+  --transition: all 0.2s ease;
+}
+
+/* ────────── GLOBAL RESET ────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ────────── SCROLLBAR ────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { 
+  background: var(--bg-hover); 
+  border-radius: 4px; 
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ────────── LAYOUT CONTAINERS ────────── */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-layout {
+  display: flex;
+  flex: 1;
+}
+
+.content-area {
+  flex: 1;
+  padding: var(--spacing-large);
+  margin-left: var(--sidebar-width);
+  transition: margin-left 0.3s ease;
+}
+
+/* ────────── HEADER ────────── */
+header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--bg-hover);
+  padding: 1rem 2rem;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--terminal-text);
+  letter-spacing: 1px;
+}
+
+/* ────────── SIDEBAR ────────── */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--bg-hover);
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.sidebar-nav {
+  padding: var(--spacing);
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  margin: 0.25rem 0;
+  border-radius: var(--radius-small);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.nav-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--bg-hover);
+}
+
+.nav-item.active {
+  background: var(--bg-card);
+  color: var(--terminal-text);
+  border-color: var(--terminal-text);
+}
+
+/* ────────── BUTTONS ────────── */
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+.btn-primary {
+  background: var(--btn-primary);
+  color: white;
+}
+
+.btn-secondary {
+  background: var(--btn-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--bg-hover);
+}
+
+.btn-danger {
+  background: var(--btn-danger);
+  color: white;
+}
+
+.btn-warning {
+  background: var(--btn-warning);
+  color: white;
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ────────── FORM ELEMENTS ────────── */
+.form-input, .form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-input);
+  border: 1px solid var(--bg-hover);
+  border-radius: var(--radius-small);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.form-input:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--terminal-text);
+  box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* ────────── TOGGLE SWITCH ────────── */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.toggle-label {
+  display: block;
+  width: 48px;
+  height: 24px;
+  background: var(--bg-hover);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.toggle-label::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.toggle-switch input:checked + .toggle-label {
+  background: var(--btn-primary);
+}
+
+.toggle-switch input:checked + .toggle-label::after {
+  left: 26px;
+}
+
+/* ────────── RESPONSIVE ────────── */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .content-area {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
+  header h1 {
+    font-size: 1.2rem;
+  }
+}

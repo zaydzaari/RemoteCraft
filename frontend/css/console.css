@@ -1,0 +1,715 @@
+/* ═══════════════════════════════════════════════════════════════
+   💻 CONSOLE PAGE STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ────────── PAGE LAYOUT ────────── */
+.console-page {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ────────── PAGE HEADER ────────── */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.header-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.header-content p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.server-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--bg-hover);
+}
+
+.server-indicator .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.server-indicator .status-dot.online {
+  background: var(--terminal-success);
+}
+
+.server-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.server-select {
+  min-width: 200px;
+}
+
+/* ────────── CONSOLE CONTROLS ────────── */
+.console-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-hover);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.controls-left,
+.controls-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.auto-scroll-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-small);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.auto-scroll-toggle input {
+  accent-color: var(--terminal-success);
+}
+
+/* ────────── TERMINAL SECTION ────────── */
+.terminal-section {
+  background: #000000;
+  border: 2px solid var(--terminal-text);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--terminal-text);
+}
+
+.terminal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--terminal-text);
+}
+
+.terminal-icon {
+  font-size: 1.2rem;
+}
+
+.terminal-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.terminal-stats .stat {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.terminal-stats strong {
+  color: var(--text-primary);
+}
+
+.terminal-stats strong.good {
+  color: var(--terminal-success);
+}
+
+.terminal-stats strong.warning {
+  color: var(--terminal-warning);
+}
+
+.terminal-stats strong.bad {
+  color: var(--terminal-error);
+}
+
+.terminal-body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  padding: 1rem;
+  height: 400px;
+  overflow-y: auto;
+  background: #000000;
+  color: #00ff00;
+}
+
+/* ────────── CONSOLE LINE TYPES ────────── */
+.console-line {
+  padding: 0.125rem 0;
+  word-wrap: break-word;
+  border-left: 2px solid transparent;
+  padding-left: 0.75rem;
+  margin-left: -0.75rem;
+  transition: background 0.1s ease;
+}
+
+.console-line:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.console-line.info {
+  color: #8b949e;
+}
+
+.console-line.success {
+  color: #3fb950;
+  border-left-color: #3fb950;
+}
+
+.console-line.warning {
+  color: #d29922;
+  border-left-color: #d29922;
+}
+
+.console-line.error {
+  color: #f85149;
+  border-left-color: #f85149;
+  background: rgba(248, 81, 73, 0.1);
+}
+
+.console-line.chat {
+  color: #58a6ff;
+}
+
+.console-line.join {
+  color: #3fb950;
+}
+
+.console-line.leave {
+  color: #f85149;
+}
+
+.console-line.command {
+  color: #a371f7;
+  border-left-color: #a371f7;
+}
+
+.console-line.achievement {
+  color: #f0e68c;
+  border-left-color: #f0e68c;
+}
+
+.console-line.save {
+  color: #58a6ff;
+  border-left-color: #58a6ff;
+}
+
+.console-line.cursor {
+  animation: blink 1s infinite;
+  color: #00ff00;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ────────── COMMAND INPUT ────────── */
+.command-section {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-hover);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.command-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #000000;
+  border: 1px solid var(--terminal-text);
+  border-radius: var(--radius-small);
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.command-prompt {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--terminal-success);
+}
+
+.command-input {
+  flex: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  color: #00ff00;
+  outline: none;
+}
+
+.command-input::placeholder {
+  color: #4a5568;
+}
+
+.btn-send {
+  background: var(--terminal-text);
+  color: #000000;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-send:hover {
+  filter: brightness(1.1);
+}
+
+.command-history {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.history-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-right: 0.5rem;
+}
+
+.history-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-hover);
+  border-radius: var(--radius-small);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.history-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--terminal-text);
+}
+
+/* ────────── QUICK COMMANDS ────────── */
+.quick-commands {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-hover);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--bg-hover);
+}
+
+.section-header h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  color: var(--terminal-text);
+  font-weight: 600;
+}
+
+.section-info span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.commands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.command-category {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-hover);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.command-category h4 {
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--bg-hover);
+}
+
+.command-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.quick-cmd {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--bg-hover);
+  border-radius: var(--radius-small);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.quick-cmd:hover {
+  background: var(--terminal-text);
+  color: var(--bg-primary);
+  border-color: var(--terminal-text);
+}
+
+/* ────────── COMMAND BUILDER ────────── */
+.command-builder {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-hover);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.builder-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.builder-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.builder-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.builder-group label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.builder-preview {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #000000;
+  border: 1px solid var(--terminal-text);
+  border-radius: var(--radius-small);
+}
+
+.builder-preview label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.preview-command {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  color: #00ff00;
+  flex: 1;
+}
+
+.builder-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ────────── CONSOLE FILTERS ────────── */
+.console-filters {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-hover);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.filters-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filter-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.filter-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.filter-toggle input {
+  display: none;
+}
+
+.filter-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-small);
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.filter-toggle input:checked + .filter-badge {
+  opacity: 1;
+}
+
+.filter-toggle input:not(:checked) + .filter-badge {
+  opacity: 0.4;
+}
+
+.filter-badge.info {
+  background: rgba(139, 148, 158, 0.2);
+  color: #8b949e;
+  border-color: #8b949e;
+}
+
+.filter-badge.warning {
+  background: rgba(210, 153, 34, 0.2);
+  color: #d29922;
+  border-color: #d29922;
+}
+
+.filter-badge.error {
+  background: rgba(248, 81, 73, 0.2);
+  color: #f85149;
+  border-color: #f85149;
+}
+
+.filter-badge.chat {
+  background: rgba(88, 166, 255, 0.2);
+  color: #58a6ff;
+  border-color: #58a6ff;
+}
+
+.filter-badge.join {
+  background: rgba(63, 185, 80, 0.2);
+  color: #3fb950;
+  border-color: #3fb950;
+}
+
+.filter-badge.command {
+  background: rgba(163, 113, 247, 0.2);
+  color: #a371f7;
+  border-color: #a371f7;
+}
+
+.filter-search {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-search .form-input {
+  flex: 1;
+  max-width: 400px;
+}
+
+/* ────────── BUTTON VARIANTS ────────── */
+.btn-start {
+  background: var(--terminal-success);
+  color: white;
+}
+
+.btn-stop {
+  background: var(--terminal-error);
+  color: white;
+}
+
+.btn-restart {
+  background: var(--terminal-warning);
+  color: white;
+}
+
+.btn-kill {
+  background: #7c3aed;
+  color: white;
+}
+
+/* ────────── RESPONSIVE DESIGN ────────── */
+@media (max-width: 1024px) {
+  .commands-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .builder-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .terminal-body {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .console-page {
+    gap: 1rem;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .header-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  
+  .server-select {
+    width: 100%;
+  }
+  
+  .console-controls {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .controls-left,
+  .controls-right {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .terminal-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  
+  .terminal-stats {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .terminal-body {
+    height: 250px;
+    font-size: 0.8rem;
+  }
+  
+  .command-input-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .command-input {
+    text-align: center;
+  }
+  
+  .btn-send {
+    width: 100%;
+  }
+  
+  .command-history {
+    justify-content: center;
+  }
+  
+  .commands-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .builder-actions {
+    flex-direction: column;
+  }
+  
+  .filter-search {
+    flex-direction: column;
+  }
+  
+  .quick-commands,
+  .command-builder,
+  .console-filters {
+    padding: 1rem;
+  }
+  
+  .page-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-body {
+    height: 200px;
+    font-size: 0.75rem;
+  }
+  
+  .command-buttons {
+    flex-direction: column;
+  }
+  
+  .quick-cmd {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .filter-toggles {
+    flex-direction: column;
+  }
+  
+  .filter-toggle {
+    width: 100%;
+  }
+  
+  .filter-badge {
+    width: 100%;
+    text-align: center;
+  }
+}
