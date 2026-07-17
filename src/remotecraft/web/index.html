@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>RemoteCraft</title>
+    <link rel="stylesheet" href="/assets/app.css">
+    <script src="/assets/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="RemoteCraft dashboard">
+        <span class="brand-mark" aria-hidden="true">RC</span>
+        <span>RemoteCraft</span>
+      </a>
+      <div class="topbar-actions">
+        <span class="connection" id="connection-state" data-state="offline">Disconnected</span>
+        <button class="button button-secondary" id="credentials-button" type="button">Credentials</button>
+        <a class="button button-secondary" href="https://github.com/zaydzaari/RemoteCraft" target="_blank" rel="noreferrer">Repository</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="overview" aria-labelledby="overview-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CONTROL PLANE</p>
+            <h1 id="overview-heading">Server overview</h1>
+          </div>
+          <button class="button button-primary" id="refresh-button" type="button">Refresh</button>
+        </div>
+
+        <div class="metrics" aria-live="polite">
+          <div class="metric">
+            <span class="metric-label">Managed</span>
+            <strong id="total-count">0</strong>
+          </div>
+          <div class="metric metric-online">
+            <span class="metric-label">Online</span>
+            <strong id="online-count">0</strong>
+          </div>
+          <div class="metric metric-offline">
+            <span class="metric-label">Offline</span>
+            <strong id="offline-count">0</strong>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Remote host</span>
+            <strong class="metric-text" id="host-state">Not checked</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="create-section" aria-labelledby="create-heading">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">VANILLA</p>
+            <h2 id="create-heading">Create server</h2>
+          </div>
+        </div>
+        <form id="create-form" class="create-form">
+          <label>
+            <span>Name</span>
+            <input id="server-name" name="name" required minlength="2" maxlength="32" pattern="[A-Za-z0-9][A-Za-z0-9_-]+" placeholder="survival-main" autocomplete="off">
+          </label>
+          <label>
+            <span>Release</span>
+            <select id="server-version" name="version" required>
+              <option value="">Connect to load releases</option>
+            </select>
+          </label>
+          <label>
+            <span>Memory</span>
+            <select id="server-memory" name="ram_gb">
+              <option value="2">2 GB</option>
+              <option value="4" selected>4 GB</option>
+              <option value="6">6 GB</option>
+              <option value="8">8 GB</option>
+              <option value="12">12 GB</option>
+              <option value="16">16 GB</option>
+            </select>
+          </label>
+          <label class="eula-control">
+            <input id="accept-eula" name="accept_eula" type="checkbox" required>
+            <span>I accept the <a href="https://aka.ms/MinecraftEULA" target="_blank" rel="noreferrer">Minecraft EULA</a></span>
+          </label>
+          <button class="button button-primary create-button" type="submit">Create</button>
+        </form>
+      </section>
+
+      <section class="servers-section" aria-labelledby="servers-heading">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">INVENTORY</p>
+            <h2 id="servers-heading">Managed servers</h2>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Server</th>
+                <th scope="col">Release</th>
+                <th scope="col">Memory</th>
+                <th scope="col">State</th>
+                <th scope="col" class="actions-heading">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="server-rows"></tbody>
+          </table>
+          <div class="empty-state" id="empty-state">
+            <strong>No managed servers</strong>
+            <span>Create a Vanilla server to begin.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="credentials-dialog">
+      <form method="dialog" class="dialog-card" id="credentials-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">AUTHENTICATION</p>
+            <h2>API credentials</h2>
+          </div>
+          <button class="icon-button" id="credentials-close" aria-label="Close credentials dialog" title="Close" type="button">X</button>
+        </div>
+        <label>
+          <span>Bearer token</span>
+          <input id="api-token" type="password" required minlength="32" autocomplete="off" spellcheck="false">
+        </label>
+        <p class="form-error" id="credentials-error" role="alert"></p>
+        <div class="dialog-actions">
+          <button class="button button-secondary" id="forget-token" type="button">Forget token</button>
+          <button class="button button-primary" value="default" type="submit">Connect</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="console-dialog">
+      <div class="dialog-card console-card">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow" id="console-server-state">SERVER</p>
+            <h2 id="console-title">Console</h2>
+          </div>
+          <button class="icon-button" id="console-close" aria-label="Close console" title="Close" type="button">X</button>
+        </div>
+        <pre id="console-output" tabindex="0">Loading logs...</pre>
+        <form id="command-form" class="command-form">
+          <label class="sr-only" for="server-command">Minecraft command</label>
+          <input id="server-command" maxlength="512" placeholder="say Server maintenance in 5 minutes" autocomplete="off">
+          <button class="button button-primary" type="submit">Send</button>
+        </form>
+      </div>
+    </dialog>
+
+    <div class="toasts" id="toasts" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>

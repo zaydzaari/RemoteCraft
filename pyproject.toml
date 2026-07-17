@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "remotecraft"
+version = "0.2.0"
+description = "A small, authenticated dashboard for managing Vanilla Minecraft servers over SSH."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Zayd Zaari" }]
+keywords = ["fastapi", "minecraft", "server-management", "ssh"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Web Environment",
+  "Framework :: FastAPI",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: System :: Systems Administration",
+]
+dependencies = [
+  "fastapi>=0.139,<0.140",
+  "paramiko>=5,<6",
+  "python-dotenv>=1.2,<2",
+  "uvicorn[standard]>=0.51,<0.52",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.5,<2",
+  "httpx>=0.28,<0.29",
+  "pip-audit>=2.10,<3",
+  "pytest>=9,<10",
+  "pytest-cov>=7,<8",
+  "ruff>=0.15.22,<0.16",
+]
+
+[project.scripts]
+remotecraft = "remotecraft.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/zaydzaari/RemoteCraft"
+Issues = "https://github.com/zaydzaari/RemoteCraft/issues"
+Source = "https://github.com/zaydzaari/RemoteCraft"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/remotecraft"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-config --strict-markers -ra"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["remotecraft"]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
+skip_covered = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "S", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "S105", "S106"]
