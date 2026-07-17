@@ -1,0 +1,56 @@
+name: Bug report
+description: Report reproducible RemoteCraft behavior that is not working as documented.
+title: "[Bug]: "
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include API tokens, private keys, hostnames, IP addresses, or private logs.
+  - type: input
+    id: version
+    attributes:
+      label: RemoteCraft version
+      placeholder: v0.2.1
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: Installation method
+      options:
+        - Guided installer
+        - Manual installation
+        - Development checkout
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Explain the expected and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Open...
+        2. Select...
+        3. Observe...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Control-plane OS, Python version, remote Linux distribution, and Java version.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety check
+      options:
+        - label: I removed credentials, private host details, and personal data from this report.
+          required: true

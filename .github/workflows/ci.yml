@@ -39,6 +39,12 @@ jobs:
       - name: Lint
         run: ruff check .
 
+      - name: Check installer syntax
+        run: bash -n scripts/install.sh
+
+      - name: Smoke-test installer
+        run: bash tests/install_smoke.sh
+
       - name: Test
         run: pytest --cov=remotecraft --cov-report=term-missing
 

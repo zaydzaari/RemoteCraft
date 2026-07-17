@@ -1,0 +1,35 @@
+name: Feature request
+description: Propose a focused improvement that preserves RemoteCraft's security model.
+title: "[Feature]: "
+labels: [enhancement, needs-triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the smallest useful workflow, including failure states.
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security considerations
+      description: Note any new remote commands, paths, downloads, credentials, or network exposure.
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This does not introduce a general-purpose web terminal.
+          required: true
+        - label: I reviewed the public roadmap and searched existing issues.
+          required: true
