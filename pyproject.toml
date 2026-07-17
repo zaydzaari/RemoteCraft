@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "remotecraft"
-version = "0.2.0"
-description = "A small, authenticated dashboard for managing Vanilla Minecraft servers over SSH."
+version = "0.2.1"
+description = "A lightweight, security-first Minecraft control plane for a Linux VPS over SSH."
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"

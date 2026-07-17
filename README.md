@@ -5,12 +5,13 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-2EA44F)](LICENSE)
 [![Status: Alpha](https://img.shields.io/badge/status-alpha-D97706)](#project-status)
 
-RemoteCraft is a small, authenticated control plane for managing Vanilla Minecraft
-servers on a trusted Linux host over SSH. It pairs a FastAPI backend with a focused web
-dashboard for provisioning servers, controlling their lifecycle, reading logs, and
-sending console commands.
+RemoteCraft is a lightweight, security-first control plane for people who already own a
+Linux VPS and want to manage Vanilla Minecraft servers without Docker or a heavyweight
+hosting panel. It pairs a FastAPI backend with a focused web dashboard for provisioning
+servers, controlling their lifecycle, reading logs, and sending console commands over a
+strict SSH boundary.
 
-![RemoteCraft dashboard](docs/dashboard.png)
+![RemoteCraft workflow demo](docs/demo.gif)
 
 > [!IMPORTANT]
 > RemoteCraft is alpha software. Keep it bound to loopback or behind a properly secured
@@ -84,7 +85,33 @@ sudo install -d -o minecraft -g minecraft -m 0750 /srv/minecraft
 Configure key-based SSH access for the `minecraft` user. Verify the host fingerprint
 through your provider console before adding it to `known_hosts`.
 
-## Quick start
+## Two-minute install
+
+The guided installer checks the control-plane requirements, confirms the VPS SSH
+fingerprint, tests key or agent authentication, verifies the remote tools and server root,
+installs RemoteCraft, writes a private configuration, and starts a user-level systemd
+service when available.
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/zaydzaari/RemoteCraft/main/scripts/install.sh)
+```
+
+The script never installs remote packages, accepts a password, or trusts an SSH host key
+silently. Verify the displayed fingerprint through your VPS provider console before
+typing `YES`.
+
+To inspect the installer before running it:
+
+```bash
+curl -fsSLO https://raw.githubusercontent.com/zaydzaari/RemoteCraft/main/scripts/install.sh
+less install.sh
+bash install.sh
+```
+
+After installation, open `http://127.0.0.1:8000` and enter the API token printed by the
+installer. For a remote control plane, use the SSH tunnel shown below.
+
+## Manual setup
 
 1. Clone the repository and create a virtual environment.
 
@@ -208,15 +235,27 @@ ruff check .
 pytest --cov=remotecraft --cov-report=term-missing
 python -m build
 pip-audit --skip-editable
+bash -n scripts/install.sh
+bash tests/install_smoke.sh
 ```
 
 The test suite uses fake SSH sessions. It covers API authentication, command quoting,
 download verification, lifecycle transitions, safe deletion, metadata persistence,
 Mojang cache behavior, and strict SSH host-key policy without connecting to a real server.
 
+## Roadmap and community
+
+The public [roadmap](ROADMAP.md) tracks the intentionally small next steps. Use
+[Discussions](https://github.com/zaydzaari/RemoteCraft/discussions) for setup questions and
+design ideas, or choose a structured [issue form](https://github.com/zaydzaari/RemoteCraft/issues/new/choose)
+for reproducible bugs and focused feature requests. Contributions are welcome; see
+[CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+
+Release history is documented in [CHANGELOG.md](CHANGELOG.md).
+
 ## Project status
 
-RemoteCraft `0.2.0` is an alpha release focused on one complete workflow: managing Vanilla
+RemoteCraft `0.2.1` is an alpha release focused on one complete workflow: managing Vanilla
 Minecraft servers on one Linux host. It intentionally does not claim support for Paper,
 Spigot, Fabric, Forge, backups, player administration, multi-user RBAC, or clustered hosts.
 
